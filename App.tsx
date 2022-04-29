@@ -1,27 +1,15 @@
 //React navigation
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import AuthContextProvider from "./src/contexts/AuthContext";
 //Components
-import Login from "./src/pages/Login";
-
-const Stack = createNativeStackNavigator();
+import Routes from "./src/pages/routes";
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen 
-          name="Login" 
-          component={Login} 
-          options={{
-            headerStyle: {
-              backgroundColor: '#003B71',
-            },
-            headerShadowVisible: false,
-            headerShown: false,
-          }}
-        />
-      </Stack.Navigator>
+      <AuthContextProvider>
+        <Routes />
+      </AuthContextProvider>
     </NavigationContainer>
   )
 }
