@@ -1,10 +1,14 @@
 import { createContext, useState, useContext, useEffect, ReactNode } from 'react';
 import data from '../../fakeData.json';
 import { Aluno } from '../utils/types';
+//React navigation
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../pages/RootStackParams';
+import { useNavigation } from '@react-navigation/native';
 
 type AuthContextType = {
   aluno: Aluno | undefined;
-  signIn: (matricula: string, senha: string) => boolean | undefined; 
+  signIn: (matricula: string, senha: string) => void; 
 }
 
 type AuthContextProviderPros = {
@@ -13,12 +17,15 @@ type AuthContextProviderPros = {
 
 export const AuthContext = createContext({} as AuthContextType)
 
+type AuthContextProps = NativeStackNavigationProp<RootStackParamList, 'AuthContext'>;
+
 const AuthContextProvider = (props: AuthContextProviderPros) => {
   const [ aluno, setAluno ] = useState<Aluno>();
+  const navigation = useNavigation<AuthContextProps>();
   
   const verifyStudent = (matricula: string, senha: string) =>  {
     data.map((aluno) => {
-      if(matricula === aluno.matricula && senha === senha) {
+      if(matricula === aluno.matricula && senha === aluno.senha) {
         setAluno(aluno);
       }
     })
@@ -26,15 +33,13 @@ const AuthContextProvider = (props: AuthContextProviderPros) => {
   }
 
   const signIn = (matricula: string, senha: string) => {
-    //verifyStudent vai verificar se as credentiais estão
-    //corretas, se estiverem, retorna os dados do aluno
-    const alunoVerificado = verifyStudent(matricula, senha)
-    if(alunoVerificado) {
-      if(alunoVerificado.ehMonitor === true) return true;
-      if(alunoVerificado.ehMonitor === false) return false;
-    }else {
-      throw Error;
-    }
+    data.map((aluno) => {
+      if(matricula === aluno.matricula && senha === aluno.senha) {
+        aluno.ehMonitor === true
+          ? navigation.navigate('Monitor')
+          : navigation.navigate('Aluno')
+      }
+    })
   }
 
   return (

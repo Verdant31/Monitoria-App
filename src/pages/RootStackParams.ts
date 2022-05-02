@@ -1,5 +1,7 @@
 import { Aluno } from "../utils/types"
 
 export type RootStackParamList = {
-  Login: { aluno: Aluno }
+  AuthContext: { aluno: Aluno }
+  Monitor: undefined;
+  Aluno: undefined;
 }

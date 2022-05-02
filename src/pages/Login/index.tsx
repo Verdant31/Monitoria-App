@@ -6,18 +6,13 @@ import { Button } from 'react-native-elements';
 import { styles } from './styles'
 //Components
 import Input from '../../components/Login/Input/Input';
-//React navigation
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../RootStackParams';
-import { useNavigation } from '@react-navigation/native';
 import { useAuth } from '../../contexts/AuthContext';
-
-type LoginScreenProp = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
 const Login = () => {
   const { signIn } = useAuth();
-  const navigation = useNavigation<LoginScreenProp>()
-
+  const handleSignIn = () => {
+    signIn('0113', '321')
+  }
   return (
     <View style={styles.container}> 
       <SafeAreaView >
@@ -26,7 +21,7 @@ const Login = () => {
         </View>
         <Input title="Matrícula" placeHolder='Entre com sua matrícula' />
         <Input title="Senha" placeHolder='Entre com sua senha' />
-        <Button style={{marginTop: 20}} title="Entrar" />
+        <Button onPress={() => handleSignIn()} style={{marginTop: 20}} title="Entrar" />
       </SafeAreaView>
     </View>
   )
