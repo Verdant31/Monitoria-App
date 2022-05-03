@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, useEffect, ReactNode } from 'react';
-import data from '../../fakeData.json';
+import data from '../../alunos.json';
 import { Aluno } from '../utils/types';
 //React navigation
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';

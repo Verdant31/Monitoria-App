@@ -7,4 +7,9 @@ export const styles = StyleSheet.create({
     backgroundColor: '#003B71',
     alignItems: 'center'
   },
+  title: {
+    fontSize: 32,
+    paddingTop: 40,
+    color: 'white'
+  }
 })

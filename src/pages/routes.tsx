@@ -3,9 +3,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-
-
-import Aluno from "../pages/Aluno/Home";
 //Components
 import Login from "./Login";
 import Home from "../pages/Monitor/Home";
@@ -20,23 +17,31 @@ const MonitorHomeTabs = () => {
     <Tab.Navigator initialRouteName="Home" 
       screenOptions={{
         tabBarStyle: {
-          height: 90
+          height: 90,
+          backgroundColor: '#003B71',
+          borderTopWidth: 0,
         },
+        tabBarLabelStyle: {
+          fontSize: 16,
+          color: 'white'
+        }, 
+        headerShadowVisible: false,
+        headerShown: false,
       }}
     >
-      <Tab.Screen name="Home" component={Home} 
-        options={{
-          tabBarIcon: () => <Ionicons name="home" size={24} color="black" />
-        }}
-      />
       <Tab.Screen name="Monitorias" component={Monitorias} 
         options={{
-          tabBarIcon: () => <Ionicons name="newspaper" size={24} color="black" />
+          tabBarIcon: () => <Ionicons name="newspaper" size={24} color="white" />
+        }}
+      />
+      <Tab.Screen name="Home" component={Home} 
+        options={{
+          tabBarIcon: () => <Ionicons name="home" size={24} color="white" />
         }}
       />
       <Tab.Screen name="Perfil" component={Perfil} 
         options={{
-          tabBarIcon: () => <Ionicons name="settings" size={24} color="black" />
+          tabBarIcon: () => <Ionicons name="settings" size={24} color="white" />
         }}
       />
     </Tab.Navigator>
