@@ -1,12 +1,12 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 
-const Monitor = () => {
+const Monitorias = () => {
   return (
     <View>
-      <Text>Hehe</Text>
+      <Text>Monitorias</Text>
     </View>
   )
 }
 
-export default Monitor
+export default Monitorias

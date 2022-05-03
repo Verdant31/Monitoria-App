@@ -22,19 +22,11 @@ type AuthContextProps = NativeStackNavigationProp<RootStackParamList, 'AuthConte
 const AuthContextProvider = (props: AuthContextProviderPros) => {
   const [ aluno, setAluno ] = useState<Aluno>();
   const navigation = useNavigation<AuthContextProps>();
-  
-  const verifyStudent = (matricula: string, senha: string) =>  {
-    data.map((aluno) => {
-      if(matricula === aluno.matricula && senha === aluno.senha) {
-        setAluno(aluno);
-      }
-    })
-    return aluno;
-  }
 
   const signIn = (matricula: string, senha: string) => {
     data.map((aluno) => {
       if(matricula === aluno.matricula && senha === aluno.senha) {
+        setAluno(aluno)
         aluno.ehMonitor === true
           ? navigation.navigate('Monitor')
           : navigation.navigate('Aluno')
