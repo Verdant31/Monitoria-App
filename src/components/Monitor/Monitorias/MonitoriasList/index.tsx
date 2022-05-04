@@ -14,7 +14,7 @@ const MonitoriasList = () => {
   },[])
 
   const renderItem = ({ item }:any) => (
-    <View style={styles.monitoriaCard} key={item.codigoDisciplina}>
+    <View style={styles.monitoriaCard}>
       <Text style={{fontSize: 18, fontWeight: '500'}}>{item.nomeDisciplina}</Text>
       <Text style={{fontSize: 18}}>{item.professorDisciplina}</Text>
       <Text style={{fontSize: 18}}>Código: {item.codigoDisciplina}</Text>
@@ -24,6 +24,7 @@ const MonitoriasList = () => {
   return (
     <View style={{width: '100%'}}>
       <FlatList
+        keyExtractor={(item) => item.codigoDisciplina}
         style={{ marginTop: 60 }}
         data={monitorias}
         renderItem={renderItem}

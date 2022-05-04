@@ -4,4 +4,5 @@ export type RootStackParamList = {
   AuthContext: { aluno: Aluno }
   Monitor: undefined;
   Aluno: undefined;
+  Solicitation: undefined;
 }

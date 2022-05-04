@@ -8,6 +8,7 @@ import Login from "./Login";
 import Home from "../pages/Monitor/Home";
 import Perfil from "./Monitor/Perfil";
 import Monitorias from "./Monitor/Monitorias";
+import Solicitation from "./Monitor/Home/Solicitation";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -98,6 +99,18 @@ const Routes = () => {
         options={{
           headerShadowVisible: false,
           headerShown: false
+        }}
+      />
+      <Stack.Screen name="Solicitation" component={Solicitation}
+        options={{
+          headerTitleStyle: {
+            color: '#f2f2f2'
+          },
+          headerTitle: 'Solicitação',
+          headerShadowVisible: false,
+          headerStyle: {
+            backgroundColor: '#003B71',
+          },
         }}
       />
     </Stack.Navigator>
