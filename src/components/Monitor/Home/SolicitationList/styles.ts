@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native"
-import { AuthContext } from "../../../../contexts/AuthContext"
 
 export const styles = StyleSheet.create({
   listContainer: {
