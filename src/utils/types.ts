@@ -5,4 +5,11 @@ export type Aluno = {
   email: string;
   telefone: string;
   ehMonitor: boolean;
+  monitorias?: Monitoria[];
+}
+
+export type Monitoria = {
+  codigoDisciplina: string,
+  nomeDisciplina: string,
+  professorDisciplina: string
 }

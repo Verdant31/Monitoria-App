@@ -5,7 +5,19 @@
     "email": "verdantxd@gmail.com",
     "senha": "123",
     "telefone": "67999736552",
-    "ehMonitor": true
+    "ehMonitor": true,
+    "monitorias": [
+      {
+        "codigoDisciplina": "4327",
+        "nomeDisciplina": "Sistemas Inteligentes Avançados",
+        "professorDisciplina": "Leandro Escobar"
+      },
+      {
+        "codigoDisciplina": "6666",
+        "nomeDisciplina": "Programação Distribuída",
+        "professorDisciplina": "Felipe Prysyiada"
+      }
+    ]
   },
   {
     "matricula": "0113",
