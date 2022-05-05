@@ -7,7 +7,7 @@ import LabelInfo from '../../../components/Monitor/Perfil/LabelInfo';
 import { Button } from 'react-native-elements';
 
 const Perfil = () => {
-  const { aluno } = useAuth();
+  const { aluno, signOut} = useAuth();
   if(!aluno) {
     return (
       <View>
@@ -29,7 +29,10 @@ const Perfil = () => {
           : <LabelInfo label="Monitor" value='Não'/>
         }
       </View>
-      <Button onPress={() => console.log('hehe')} style={styles.updateButton} title="Editar perfil" />
+      <View style={{marginTop: 40}}>
+        <Button onPress={() => console.log('hehe')} style={styles.updateButton} title="Editar perfil" />
+        <Button onPress={() => signOut()} style={styles.updateButton} title="Encerrar sessão" />
+      </View>
     </SafeAreaView>
   )
 }

@@ -9,6 +9,7 @@ import { useNavigation } from '@react-navigation/native';
 type AuthContextType = {
   aluno: Aluno | undefined;
   signIn: (matricula: string, senha: string) => void; 
+  signOut: () => void;
 }
 
 type AuthContextProviderPros = {
@@ -17,10 +18,10 @@ type AuthContextProviderPros = {
 
 export const AuthContext = createContext({} as AuthContextType)
 
-type AuthContextProps = NativeStackNavigationProp<RootStackParamList, 'AuthContext'>;
+type AuthContextProps = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
 const AuthContextProvider = (props: AuthContextProviderPros) => {
-  const [ aluno, setAluno ] = useState<Aluno>();
+  const [ aluno, setAluno ] = useState<Aluno | undefined>();
   const navigation = useNavigation<AuthContextProps>();
 
   const signIn = (matricula: string, senha: string) => {
@@ -34,8 +35,13 @@ const AuthContextProvider = (props: AuthContextProviderPros) => {
     })
   }
 
+  const signOut = () => {
+    setAluno(undefined)
+    navigation.navigate('Login')
+  }
+
   return (
-    <AuthContext.Provider value={{signIn, aluno}}>
+    <AuthContext.Provider value={{signIn, aluno, signOut}}>
       {props.children}
     </AuthContext.Provider>
   )

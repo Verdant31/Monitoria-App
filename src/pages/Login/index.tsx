@@ -11,7 +11,11 @@ import { useState } from 'react';
 const Login = () => {
   const [ matricula, setMatricula ] = useState<string>('')
   const [ senha, setSenha ] = useState<string>('')
-
+  const handleLogin = () => {
+    signIn(matricula, senha);
+    setMatricula('');
+    setSenha('');
+  }
   const { signIn } = useAuth();
   return (
     <View style={styles.container}> 
@@ -21,11 +25,11 @@ const Login = () => {
         </View>
         <View>
           <Text style={styles.inputLabel}>Matricula</Text>
-          <TextInput onChangeText={setMatricula} style={styles.inputField} placeholder="Entre com sua matrícula" placeholderTextColor='#555555' />
+          <TextInput value={matricula} onChangeText={setMatricula} style={styles.inputField} placeholder="Entre com sua matrícula" placeholderTextColor='#555555' />
           <Text style={styles.inputLabel}>Senha</Text>
-          <TextInput onChangeText={setSenha} style={styles.inputField} placeholder="Entre com sua senha" placeholderTextColor='#555555' />
+          <TextInput value={senha} onChangeText={setSenha} style={styles.inputField} placeholder="Entre com sua senha" placeholderTextColor='#555555' />
         </View>
-        <Button onPress={() => signIn(matricula, senha)} style={{marginTop: 20}} title="Entrar" />
+        <Button onPress={() => handleLogin()} style={{marginTop: 20}} title="Entrar" />
       </SafeAreaView>
     </View>
   )
