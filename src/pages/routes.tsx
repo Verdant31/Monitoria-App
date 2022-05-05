@@ -5,10 +5,16 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 //Components
 import Login from "./Login";
-import Home from "../pages/Monitor/Home";
-import Perfil from "./Monitor/Perfil";
+//Monitor pages
+import MonitorHome from "./Monitor/Home";
+import MonitorPerfil from "./Monitor/Perfil";
 import Monitorias from "./Monitor/Monitorias";
 import Solicitation from "./Monitor/Home/Solicitation";
+import AlunoHome from "./Aluno/Home";
+import MonitoriaInfo from "./Aluno/Home/MonitoriaInfo";
+//Student pages
+
+
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -25,7 +31,7 @@ const MonitorHomeTabs = () => {
         tabBarLabelStyle: {
           fontSize: 16,
           color: 'white'
-        }, 
+        },
         headerShadowVisible: false,
         headerShown: false,
       }}
@@ -35,12 +41,12 @@ const MonitorHomeTabs = () => {
           tabBarIcon: () => <Ionicons name="newspaper" size={24} color="white" />
         }}
       />
-      <Tab.Screen name="Home" component={Home} 
+      <Tab.Screen name="Home" component={MonitorHome} 
         options={{
           tabBarIcon: () => <Ionicons name="home" size={24} color="white" />
         }}
       />
-      <Tab.Screen name="Perfil" component={Perfil} 
+      <Tab.Screen name="Perfil" component={MonitorPerfil} 
         options={{
           tabBarIcon: () => <Ionicons name="settings" size={24} color="white" />
         }}
@@ -54,23 +60,22 @@ const AlunoHomeTabs = () => {
     <Tab.Navigator initialRouteName="Home" 
       screenOptions={{
         tabBarStyle: {
-          height: 90
+          height: 90,
+          backgroundColor: '#003B71',
+          borderTopWidth: 0,
+          paddingTop: 5
         },
+        tabBarLabelStyle: {
+          fontSize: 16,
+          color: 'white'
+        }, 
+        headerShadowVisible: false,
+        headerShown: false,
       }}
     >
-      <Tab.Screen name="Home" component={Home} 
+      <Tab.Screen name="Home" component={AlunoHome} 
         options={{
-          tabBarIcon: () => <Ionicons name="home" size={24} color="black" />
-        }}
-      />
-      <Tab.Screen name="Monitorias" component={Monitorias} 
-        options={{
-          tabBarIcon: () => <Ionicons name="newspaper" size={24} color="black" />
-        }}
-      />
-      <Tab.Screen name="Perfil" component={Perfil} 
-        options={{
-          tabBarIcon: () => <Ionicons name="settings" size={24} color="black" />
+          tabBarIcon: () => <Ionicons name="home" size={24} color="white" />
         }}
       />
     </Tab.Navigator>
@@ -107,6 +112,18 @@ const Routes = () => {
             color: '#f2f2f2'
           },
           headerTitle: 'Solicitação',
+          headerShadowVisible: false,
+          headerStyle: {
+            backgroundColor: '#003B71',
+          },
+        }}
+      />
+       <Stack.Screen name="Monitoria" component={MonitoriaInfo}
+        options={{
+          headerTitleStyle: {
+            color: '#f2f2f2'
+          },
+          headerTitle: 'Monitoria',
           headerShadowVisible: false,
           headerStyle: {
             backgroundColor: '#003B71',

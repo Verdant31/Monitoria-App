@@ -5,4 +5,5 @@ export type RootStackParamList = {
   Monitor: undefined;
   Aluno: undefined;
   Solicitation: undefined;
+  Monitoria: undefined;
 }
