@@ -10,9 +10,11 @@ import MonitorHome from "./Monitor/Home";
 import MonitorPerfil from "./Monitor/Perfil";
 import Monitorias from "./Monitor/Monitorias";
 import Solicitation from "./Monitor/Home/Solicitation";
-import AlunoHome from "./Aluno/Home";
 import MonitoriaInfo from "./Aluno/Home/MonitoriaInfo";
 //Student pages
+import AlunoHome from "./Aluno/Home";
+import AlunoPerfil from "./Aluno/Perfil";
+import CreateSolicitation from "./Aluno/CriarSolicitacao";
 
 
 
@@ -73,9 +75,19 @@ const AlunoHomeTabs = () => {
         headerShown: false,
       }}
     >
+      <Tab.Screen name="Solicitação" component={CreateSolicitation} 
+        options={{
+          tabBarIcon: () => <Ionicons name="add-circle"  size={28} color="white" />
+        }}
+      />
       <Tab.Screen name="Home" component={AlunoHome} 
         options={{
           tabBarIcon: () => <Ionicons name="home" size={24} color="white" />
+        }}
+      />
+      <Tab.Screen name="Perfil" component={AlunoPerfil} 
+        options={{
+          tabBarIcon: () => <Ionicons name="settings" size={24} color="white" />
         }}
       />
     </Tab.Navigator>
