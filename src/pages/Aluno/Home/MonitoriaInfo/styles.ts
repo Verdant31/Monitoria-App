@@ -19,4 +19,9 @@ export const styles = StyleSheet.create({
     padding: 12,
     marginTop: 30
   },
+  updateButton: {
+    width: '80%',
+    alignSelf: 'center',
+    marginTop: 40
+  }
 })

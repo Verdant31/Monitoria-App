@@ -1,4 +1,5 @@
 import { Text, View } from "react-native";
+import { Button } from "react-native-elements";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "./styles";
 
@@ -27,6 +28,9 @@ const MonitoriaInfo = () => {
           <Text style={{fontSize: 18, fontWeight: '600'}}>Numero para contato</Text>
           <Text style={{fontSize: 18, marginTop: 5}}>(67)99973-6552</Text>
         </View>
+      </View>
+      <View style={{width: '100%'}}>
+        <Button onPress={() => console.log('hehe')} style={styles.updateButton} title="Contato" />
       </View>
     </SafeAreaView>
   )
