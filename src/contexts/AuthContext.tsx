@@ -8,7 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 
 type AuthContextType = {
   aluno: Aluno | undefined;
-  signIn: (matricula: string, senha: string) => void; 
+  signIn: (matricula: string, senha: string) => boolean; 
   signOut: () => void;
 }
 
@@ -25,18 +25,19 @@ const AuthContextProvider = (props: AuthContextProviderPros) => {
   const navigation = useNavigation<AuthContextProps>();
 
   const signIn = (matricula: string, senha: string) => {
+    let isMonitor = false;
     data.map((aluno) => {
       if(matricula === aluno.matricula && senha === aluno.senha) {
         setAluno(aluno)
-        aluno.ehMonitor === true
-          ? navigation.navigate('Monitor')
-          : navigation.navigate('Aluno')
+        if(aluno.ehMonitor === true) {
+          isMonitor = true;
+        }
       }
     })
+    return isMonitor;
   }
 
   const signOut = () => {
-    setAluno(undefined)
     navigation.navigate('Login')
   }
 

@@ -11,7 +11,7 @@ const Perfil = () => {
   if(!aluno) {
     return (
       <View>
-        Loading user...
+        <Text>Loading user...</Text>
       </View>
     )
   }
