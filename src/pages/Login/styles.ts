@@ -26,5 +26,10 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
     paddingLeft: 20,
     marginBottom: 20
+  },
+  errorMessage: {
+    color: '#fa1e1e',
+    fontWeight: 'bold',
+    fontSize: 18,
   }
 })

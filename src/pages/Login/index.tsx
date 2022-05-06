@@ -18,18 +18,23 @@ type AuthContextProps = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
 const Login = () => {
   const [ matricula, setMatricula ] = useState<string>('')
-  const [ senha, setSenha ] = useState<string>('')
   const [ isModalOpen, setIsModalOpen ] = useState(false);
+  const [ senha, setSenha ] = useState<string>('')
+  const [ hasError, setHasError ] = useState(false);
   const navigation = useNavigation<AuthContextProps>();
   const { signIn } = useAuth();
 
   const closeModal = () => setIsModalOpen(false)
   const handleLogin = () => {
-    const isMonitor = signIn(matricula, senha);
+    const { isMonitor, rightCredentials } = signIn(matricula, senha);
     setMatricula('');
     setSenha('');
-    if(!isMonitor) navigation.navigate('Aluno');
-    if(isMonitor) setIsModalOpen(true);
+    if(!rightCredentials) {
+      setHasError(true)
+    }else {
+      if(!isMonitor) navigation.navigate('Aluno');
+      if(isMonitor) setIsModalOpen(true);
+    }
   }
 
   return (
@@ -45,6 +50,11 @@ const Login = () => {
             <Text style={styles.inputLabel}>Senha</Text>
             <TextInput value={senha} onChangeText={setSenha} style={styles.inputField} placeholder="Entre com sua senha" placeholderTextColor='#555555' />
           </View>
+          {hasError && (
+            <View>
+              <Text style={styles.errorMessage}>Usuário ou senha incorretos.</Text>
+            </View>
+          )}
           <Button onPress={() => handleLogin()} style={{marginTop: 20}} title="Entrar" />
         </SafeAreaView>
       </View>
