@@ -2,6 +2,7 @@ import { FlatList, Text, View } from "react-native"
 import { Button } from "react-native-elements";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "./styles";
+
 const Solicitation = () => {
   return (
     <SafeAreaView style={styles.container}>

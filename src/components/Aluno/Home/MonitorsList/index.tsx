@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { FlatList, Text, TouchableOpacity, View } from "react-native"
-import data from '../../../../../monitores.json';
+import data from '../../../../../alunos.json';
 import { RootStackParamList } from "../../../../pages/RootStackParams";
 import { styles } from './styles';
 

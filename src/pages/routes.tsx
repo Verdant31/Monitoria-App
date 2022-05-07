@@ -15,6 +15,7 @@ import MonitoriaInfo from "./Aluno/Home/MonitoriaInfo";
 import AlunoHome from "./Aluno/Home";
 import AlunoPerfil from "./Aluno/Perfil";
 import CreateSolicitation from "./Aluno/CriarSolicitacao";
+import MonitoriaDetails from "./Monitor/Monitorias/MonitoriaDetails";
 
 
 
@@ -136,6 +137,18 @@ const Routes = () => {
             color: '#f2f2f2'
           },
           headerTitle: 'Monitoria',
+          headerShadowVisible: false,
+          headerStyle: {
+            backgroundColor: '#003B71',
+          },
+        }}
+      />
+      <Stack.Screen name="MonitoriaDetails" component={MonitoriaDetails}
+        options={{
+          headerTitleStyle: {
+            color: '#f2f2f2'
+          },
+          headerTitle: 'Detalhes',
           headerShadowVisible: false,
           headerStyle: {
             backgroundColor: '#003B71',

@@ -1,11 +1,18 @@
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useEffect, useState } from "react";
-import { View, Text, FlatList } from "react-native"
+import { View, Text, FlatList, TouchableOpacity } from "react-native"
 import { useAuth } from "../../../../contexts/AuthContext";
+import { RootStackParamList } from "../../../../pages/RootStackParams";
 import { Monitoria } from "../../../../utils/types";
 import { styles } from './styles';
+
+type MonitorProps = NativeStackNavigationProp<RootStackParamList, 'Monitor'>;
+
 const MonitoriasList = () => {
   const [ monitorias, setMonitorias ] = useState<Monitoria[]>();
   const { aluno } = useAuth();
+  const navigation = useNavigation<MonitorProps>()
 
   useEffect(() => {
     if(aluno?.monitorias) {
@@ -14,11 +21,13 @@ const MonitoriasList = () => {
   },[])
 
   const renderItem = ({ item }:any) => (
-    <View style={styles.monitoriaCard}>
-      <Text style={{fontSize: 18, fontWeight: '500'}}>{item.nomeDisciplina}</Text>
-      <Text style={{fontSize: 18}}>{item.professorDisciplina}</Text>
-      <Text style={{fontSize: 18}}>Código: {item.codigoDisciplina}</Text>
-    </View>
+    <TouchableOpacity onPress={() => navigation.navigate('MonitoriaDetails', {codigoDisciplina: item.codigoDisciplina})}>
+      <View style={styles.monitoriaCard}>
+        <Text style={{fontSize: 18, fontWeight: '500'}}>{item.nomeDisciplina}</Text>
+        <Text style={{fontSize: 18}}>{item.professorDisciplina}</Text>
+        <Text style={{fontSize: 18}}>Código: {item.codigoDisciplina}</Text>
+      </View>
+    </TouchableOpacity>
   );
 
   return (

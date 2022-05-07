@@ -12,4 +12,13 @@ export type Monitoria = {
   codigoDisciplina: string,
   nomeDisciplina: string,
   professorDisciplina: string
+  solicitacoes: Solicitacao[];
+}
+
+export type Solicitacao = {
+  matriculaAluno: string;
+  nomeAluno: string;
+  dataSolicitacao: string;
+  agendamento: string;
+  finalizada: boolean;
 }

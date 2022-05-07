@@ -10,7 +10,23 @@
       {
         "codigoDisciplina": "4327",
         "nomeDisciplina": "Sistemas Inteligentes Avançados",
-        "professorDisciplina": "Leandro Escobar"
+        "professorDisciplina": "Leandro Escobar",
+        "solicitacoes": [
+          {
+            "matriculaAluno": "0113",
+            "dataSolicitacao": "07/05/2022 16:26",
+            "agendamento": "09/05/2022 15:00",
+            "finalizada": false,
+            "nomeAluno": "John Doe"
+          },
+          {
+            "matriculaAluno": "042",
+            "dataSolicitacao": "09/05/2022 12:26",
+            "agendamento": "09/05/2022 16:00",
+            "finalizada": true,
+            "nomeAluno": "Amanda"
+          }
+        ]
       },
       {
         "codigoDisciplina": "6666",
@@ -25,6 +41,14 @@
     "senha": "321",
     "email": "johndoe@gmail.com",
     "telefone": "679999999",
+    "ehMonitor": false
+  },
+  {
+    "matricula": "042",
+    "nome": "Amanda",
+    "senha": "666",
+    "email": "amanda@gmail.com",
+    "telefone": "678999999",
     "ehMonitor": false
   }
 ]

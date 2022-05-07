@@ -8,4 +8,5 @@ export type RootStackParamList = {
   Solicitation: undefined;
   Monitoria: undefined;
   CreateSolicitation: undefined;
+  MonitoriaDetails: { codigoDisciplina: string}
 }
