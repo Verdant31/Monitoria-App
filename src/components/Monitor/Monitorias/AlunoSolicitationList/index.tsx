@@ -1,4 +1,5 @@
-import { FlatList, Text, View } from "react-native";
+import { FlatList, Text, TouchableOpacity, View } from "react-native";
+import { Button } from "react-native-elements";
 import { Solicitacao } from "../../../../utils/types";
 import { styles } from './styles';
 
@@ -9,10 +10,21 @@ interface AlunoSolicitationList {
 const AlunoSolicitationList = ({solicitations}: AlunoSolicitationList) => {
 
   const renderItem = ({ item }:any) => (
-    <View style={styles.solicitationCard}> 
+    <View style={item.finalizada === true ? styles(100).solicitationCard : styles(140).solicitationCard}> 
       <Text style={{fontSize: 18, fontWeight: '500'}}>Aluno: {item.nomeAluno}</Text>
       <Text style={{fontSize: 18}}>Horario desejado: {item.agendamento}</Text>
       <Text style={{fontSize: 18}}>Matrícula: {item.matriculaAluno}</Text>
+      {!item.finalizada && 
+        (
+          <View style={styles().buttonsContainer}>
+            <TouchableOpacity style={{ width: '45%' }}>
+              <Button style={styles().button} onPress={()=> console.log('hehe')} title="Finalizar" />
+            </TouchableOpacity>
+            <TouchableOpacity style={{ width: '45%' }}>
+              <Button style={styles().button} onPress={()=> console.log('hehe')} title="Excluir" />
+            </TouchableOpacity>
+          </View>
+        )}
     </View>
   );
 

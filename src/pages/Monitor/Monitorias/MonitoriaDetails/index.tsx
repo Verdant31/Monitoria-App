@@ -34,8 +34,8 @@ const MonitoriaDetails = ({ route }: MonitoriaDetails) => {
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Solicitações</Text>    
       <View style={styles.optionsContainer}>
-        <Button onPress={() => setCurrentOption('Finalizadas')} title="Finalizadas" />
-        <Button onPress={() => setCurrentOption('Pendentes')} title="Pendentes" />
+        <Button color={currentOption === 'Finalizadas' ? '' : 'white'}onPress={() => setCurrentOption('Finalizadas')} title="Finalizadas" />
+        <Button color={currentOption === 'Finalizadas' ? 'white' : ''} onPress={() => setCurrentOption('Pendentes')} title="Pendentes" />
       </View>
       {currentOption === 'Finalizadas'
         ? <AlunoSolicitationList solicitations={finishedSolicitations} />
