@@ -20,7 +20,7 @@ const MonitoriaDetails = ({ route }: MonitoriaDetails) => {
   useEffect(() => {
     if(aluno?.monitorias) {
       aluno.monitorias.map((monitoria) => {
-        if(monitoria.codigoDisciplina === route.params.codigoDisciplina) {
+        if(monitoria.codigoDisciplina === route.params.codigoDisciplina && monitoria.solicitacoes) {
           monitoria.solicitacoes.map((solicitation) => {
             if(solicitation.finalizada === true) setFinishedSolicitations(oldState => [...oldState, solicitation])
             if(solicitation.finalizada === false) setInProgressSolicitations(oldState => [...oldState, solicitation])
@@ -29,6 +29,7 @@ const MonitoriaDetails = ({ route }: MonitoriaDetails) => {
       })
     }
   },[])
+
 
   return (
     <SafeAreaView style={styles.container}>

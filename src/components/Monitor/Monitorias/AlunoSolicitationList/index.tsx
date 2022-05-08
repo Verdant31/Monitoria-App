@@ -1,5 +1,4 @@
-import { FlatList, Text, TouchableOpacity, View } from "react-native";
-import { Button } from "react-native-elements";
+import { Button, FlatList, Text, TouchableOpacity, View } from "react-native";
 import { Solicitacao } from "../../../../utils/types";
 import { styles } from './styles';
 
@@ -18,10 +17,10 @@ const AlunoSolicitationList = ({solicitations}: AlunoSolicitationList) => {
         (
           <View style={styles().buttonsContainer}>
             <TouchableOpacity style={{ width: '45%' }}>
-              <Button style={styles().button} onPress={()=> console.log('hehe')} title="Finalizar" />
+              <Button onPress={()=> console.log('hehe')} title="Finalizar" />
             </TouchableOpacity>
             <TouchableOpacity style={{ width: '45%' }}>
-              <Button style={styles().button} onPress={()=> console.log('hehe')} title="Excluir" />
+              <Button onPress={()=> console.log('hehe')} title="Excluir" />
             </TouchableOpacity>
           </View>
         )}
