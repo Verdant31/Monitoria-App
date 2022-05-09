@@ -22,3 +22,10 @@ export type Solicitacao = {
   agendamento: string;
   finalizada: boolean;
 }
+
+export type Meeting = {
+  nomeAluno: string;
+  agendamento: string;
+  disciplina: string;
+  matriculaAluno: string;
+}

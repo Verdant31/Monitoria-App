@@ -16,6 +16,7 @@ import AlunoHome from "./Aluno/Home";
 import AlunoPerfil from "./Aluno/Perfil";
 import CreateSolicitation from "./Aluno/CriarSolicitacao";
 import MonitoriaDetails from "./Monitor/Monitorias/MonitoriaDetails";
+import Calendar from "./Monitor/Calendar";
 
 
 
@@ -52,6 +53,11 @@ const MonitorHomeTabs = () => {
       <Tab.Screen name="Perfil" component={MonitorPerfil} 
         options={{
           tabBarIcon: () => <Ionicons name="settings" size={24} color="white" />
+        }}
+      />
+      <Tab.Screen name="Agenda" component={Calendar} 
+        options={{
+          tabBarIcon: () => <Ionicons name="calendar" size={24} color="white" />
         }}
       />
     </Tab.Navigator>

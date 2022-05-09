@@ -17,7 +17,7 @@ const Perfil = () => {
   }
   return (
     <SafeAreaView style={styles.container}>
-      <Ionicons style={{marginTop: 50, alignSelf: 'center'}} name="person" size={90} color="white" />
+      <Ionicons style={{marginTop: 50, alignSelf: 'center'}} name="person" size={70} color="white" />
       <Text style={styles.title}>Dados pessoais</Text>
       <View style={styles.userContainer}>
         <LabelInfo label="Nome" value={aluno?.nome}/>
