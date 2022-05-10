@@ -11,7 +11,7 @@ import { useState } from 'react';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../RootStackParams';
 import { useNavigation } from '@react-navigation/native';
-import RouteConfirmationDialog from '../../components/Monitor/Home/RouteConfirmationDialog';
+import RouteConfirmationDialog from '../../components/Login/RouteConfirmationDialog';
 
 type AuthContextProps = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 

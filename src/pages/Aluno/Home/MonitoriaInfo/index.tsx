@@ -1,9 +1,17 @@
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Text, View } from "react-native";
 import { Button } from "react-native-elements";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { RootStackParamList } from "../../../RootStackParams";
 import { styles } from "./styles";
 
+type AlunoProps = NativeStackNavigationProp<RootStackParamList, 'Aluno'>;
+
+
 const MonitoriaInfo = () => {
+  const navigation = useNavigation<AlunoProps>();
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Dados da monitoria</Text>
@@ -30,7 +38,7 @@ const MonitoriaInfo = () => {
         </View>
       </View>
       <View style={{width: '100%'}}>
-        <Button onPress={() => console.log('hehe')} style={styles.updateButton} title="Contato" />
+        <Button onPress={() => navigation.navigate('AgendarHorario')} style={styles.updateButton} title="Agendar horário" />
       </View>
     </SafeAreaView>
   )

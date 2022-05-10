@@ -17,6 +17,7 @@ import AlunoPerfil from "./Aluno/Perfil";
 import CreateSolicitation from "./Aluno/CriarSolicitacao";
 import MonitoriaDetails from "./Monitor/Monitorias/MonitoriaDetails";
 import Calendar from "./Monitor/Calendar";
+import AgendarHorario from "./Aluno/Home/AgendarHorario";
 
 
 
@@ -155,6 +156,18 @@ const Routes = () => {
             color: '#f2f2f2'
           },
           headerTitle: 'Detalhes',
+          headerShadowVisible: false,
+          headerStyle: {
+            backgroundColor: '#003B71',
+          },
+        }}
+      />
+      <Stack.Screen name="AgendarHorario" component={AgendarHorario} 
+        options={{
+          headerTitleStyle: {
+            color: '#f2f2f2'
+          },
+          headerTitle: 'Agendamento',
           headerShadowVisible: false,
           headerStyle: {
             backgroundColor: '#003B71',

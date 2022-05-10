@@ -7,6 +7,11 @@ export type Aluno = {
   ehMonitor: boolean;
   monitorias?: Monitoria[];
 }
+export type AlunoMonitor = {
+  matricula: string;
+  nome: string;
+  monitorias: Monitoria[];
+}
 
 export type Monitoria = {
   codigoDisciplina: string,
