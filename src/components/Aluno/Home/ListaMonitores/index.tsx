@@ -8,7 +8,7 @@ import { styles } from './styles';
 type AlunoProps = NativeStackNavigationProp<RootStackParamList, 'Aluno'>;
 
 
-const MonitorsList = () => {
+const ListaMonitores = () => {
   const navigation = useNavigation<AlunoProps>();
 
   const renderItem = ({ item }:any) => {
@@ -38,4 +38,4 @@ const MonitorsList = () => {
     </View>
   )
 }
-export default MonitorsList;
+export default ListaMonitores;

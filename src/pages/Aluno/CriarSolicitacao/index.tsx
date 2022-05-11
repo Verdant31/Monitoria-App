@@ -3,7 +3,7 @@ import { Button } from "react-native-elements";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from './styles';
 
-const CreateSolicitation = () => {
+const CriarSolicitacao = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Formulário</Text>
@@ -28,4 +28,4 @@ const CreateSolicitation = () => {
   )
 }
 
-export default CreateSolicitation;
+export default CriarSolicitacao;

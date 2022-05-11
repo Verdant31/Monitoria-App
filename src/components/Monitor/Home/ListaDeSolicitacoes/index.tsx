@@ -8,7 +8,7 @@ import { styles } from './styles';
 type MonitorProps = NativeStackNavigationProp<RootStackParamList, 'Monitor'>;
 
 
-const SolicitationList = () => {
+const ListaDeSolicitacoes = () => {
   const navigation = useNavigation<MonitorProps>();
 
   const renderItem = ({ item }:any) => (
@@ -33,4 +33,4 @@ const SolicitationList = () => {
     </View>
   )
 }
-export default SolicitationList;
+export default ListaDeSolicitacoes;

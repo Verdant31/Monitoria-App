@@ -1,43 +1,40 @@
 import {useEffect, useState} from 'react';
-import { View } from 'react-native';
+import { Dimensions, View } from 'react-native';
 import { Button } from 'react-native-elements';
 import { Button as ButtonPaper, Paragraph, Dialog, Portal, Provider } from 'react-native-paper';
 import { styles } from './styles';
 //React navigation
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../../pages/RootStackParams';
-import { useNavigation } from '@react-navigation/native';
-
-type AuthContextProps = NativeStackNavigationProp<RootStackParamList, 'Login'>;
-
 
 interface DialogProps {
   isOpen: boolean;
   closeModal: () => void;
 }
 
-const RouteConfirmationDialog = ({isOpen, closeModal}: DialogProps) => {
-  const navigation = useNavigation<AuthContextProps>();
-  const handleRedirect = (path: string) => {
-    if(path === 'Monitor') navigation.navigate('Monitor')
-    if(path === 'Aluno') navigation.navigate('Aluno')
-    closeModal();
-  }
+const ConfirmarReuniaoDialog = ({isOpen, closeModal}: DialogProps) => {
 
   return (
     <Provider>
-      <View>
+      <View style={{height: Dimensions.get('window').height}}>
         <Portal>
           <Dialog visible={isOpen} dismissable>
             <Dialog.Title>Confirmação</Dialog.Title>
             <Dialog.Content>
               <Paragraph>
-                Olá! Verificamos que você além de aluno também é monitor. Deseja acessar a plataforma
-                de alunos ou de monitores?
+                Confirme os dados da sua solicitação de monitoria.
+              </Paragraph>
+              <Paragraph>
+                Monitor: João Pedro Pivoesan
+              </Paragraph>
+              <Paragraph>
+                Disciplina: Sistemas Inteligentes Avançados
+              </Paragraph>
+              <Paragraph>
+                Horário: 16:00 do dia 18/05/2022 - Bloco Vermelho
               </Paragraph>
               <View style={styles.buttonsContainer}>
-                <Button onPress={() => handleRedirect('Monitor')} style={{marginBottom: 10}} title="Monitor" />
-                <Button onPress={() => handleRedirect('Aluno')} title="Aluno" />
+                <Button title="Confirmar" />
               </View>
             </Dialog.Content>
             <Dialog.Actions>
@@ -50,4 +47,4 @@ const RouteConfirmationDialog = ({isOpen, closeModal}: DialogProps) => {
   )
 }
 
-export default RouteConfirmationDialog;
+export default ConfirmarReuniaoDialog;

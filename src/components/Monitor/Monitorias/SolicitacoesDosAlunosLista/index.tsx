@@ -6,7 +6,7 @@ interface AlunoSolicitationList {
   solicitations: Solicitacao[] | undefined;
 }
 
-const AlunoSolicitationList = ({solicitations}: AlunoSolicitationList) => {
+const SolicitacoesDosAlunosLista = ({solicitations}: AlunoSolicitationList) => {
 
   const renderItem = ({ item }:any) => (
     <View style={item.finalizada === true ? styles(100).solicitationCard : styles(140).solicitationCard}> 
@@ -38,4 +38,4 @@ const AlunoSolicitationList = ({solicitations}: AlunoSolicitationList) => {
     </View>
   )
 }
-export default AlunoSolicitationList;
+export default SolicitacoesDosAlunosLista;

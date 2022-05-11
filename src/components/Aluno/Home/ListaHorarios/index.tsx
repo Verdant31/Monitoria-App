@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { FlatList, Text, TouchableOpacity, View } from 'react-native'
-import MeetingConfirmationDialog from '../MeetingConfirmationDialog'
 import { styles } from './styles'
 import { Dimensions } from "react-native";
+import ConfirmarReuniaoDialog from '../ConfirmarReuniaoDialog';
 
 
-const HorariosList = () => {
+const ListaHorarios = () => {
   const [ isModalOpen, setIsModalOpen ] = useState(false);
   const closeModal = () => setIsModalOpen(false)
 
@@ -42,9 +42,9 @@ const HorariosList = () => {
         data={horarios}
         numColumns={3}
       />
-      <MeetingConfirmationDialog isOpen={isModalOpen} closeModal={closeModal}/>
+      <ConfirmarReuniaoDialog isOpen={isModalOpen} closeModal={closeModal}/>
     </>
   )
 }
 
-export default HorariosList
+export default ListaHorarios

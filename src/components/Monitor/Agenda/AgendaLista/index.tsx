@@ -4,7 +4,7 @@ import { useAuth } from "../../../../contexts/AuthContext";
 import { Meeting, Solicitacao } from "../../../../utils/types";
 import { styles } from "./styles";
 
-const CalendarList = () => {
+const AgendaLista = () => {
   const [ meetings, setMeetings ] = useState<Meeting[]>([]);
   const { aluno } = useAuth();
 
@@ -44,4 +44,4 @@ const CalendarList = () => {
     </View>
   )
 }
-export default CalendarList;
+export default AgendaLista;

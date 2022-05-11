@@ -2,7 +2,7 @@ import { View, Text } from "react-native";
 import { styles } from './styles'
 import { Searchbar } from 'react-native-paper';
 
-const SearchBar = () => {
+const BarraDePesquisa = () => {
   return (
     <View>
       <Searchbar 
@@ -12,4 +12,4 @@ const SearchBar = () => {
     </View>
   )
 }
-export default SearchBar;
+export default BarraDePesquisa;

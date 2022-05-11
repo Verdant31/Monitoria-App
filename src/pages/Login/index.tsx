@@ -11,7 +11,7 @@ import { useState } from 'react';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../RootStackParams';
 import { useNavigation } from '@react-navigation/native';
-import RouteConfirmationDialog from '../../components/Login/RouteConfirmationDialog';
+import ConfirmacaoDeRotaDialog from '../../components/Login/ConfirmacaoDeRotaDialog';
 
 type AuthContextProps = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
@@ -58,7 +58,7 @@ const Login = () => {
           <Button onPress={() => handleLogin()} style={{marginTop: 20}} title="Entrar" />
         </SafeAreaView>
       </View>
-      <RouteConfirmationDialog isOpen={isModalOpen} closeModal={closeModal} />
+      <ConfirmacaoDeRotaDialog isOpen={isModalOpen} closeModal={closeModal} />
     </>
   )
 }

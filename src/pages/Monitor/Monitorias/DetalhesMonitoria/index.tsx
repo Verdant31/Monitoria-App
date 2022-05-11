@@ -3,15 +3,15 @@ import { Button, Text, TouchableOpacity, View } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from './styles';
 import data from '../../../../../alunos.json';
-import AlunoSolicitationList from "../../../../components/Monitor/Monitorias/AlunoSolicitationList";
 import { Solicitacao } from '../../../../utils/types';
 import { useAuth } from "../../../../contexts/AuthContext";
 import { NativeStackNavigationProp, NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../../../../pages/RootStackParams";
+import { RootStackParamList } from "../../../RootStackParams";
+import SolicitacoesDosAlunosLista from "../../../../components/Monitor/Monitorias/SolicitacoesDosAlunosLista";
 
 type MonitoriaDetails = NativeStackScreenProps<RootStackParamList, 'MonitoriaDetails'>;
 
-const MonitoriaDetails = ({ route }: MonitoriaDetails) => {
+const DetalhesMonitoria = ({ route }: MonitoriaDetails) => {
   const [ currentOption, setCurrentOption ] = useState('Finalizadas' || 'Pendentes')
   const [ finishedSolicitations, setFinishedSolicitations ] = useState<Solicitacao[]>([]);
   const [ inProgressSolicitations, setInProgressSolicitations ] = useState<Solicitacao[]>([]); 
@@ -39,10 +39,10 @@ const MonitoriaDetails = ({ route }: MonitoriaDetails) => {
         <Button color={currentOption === 'Finalizadas' ? 'white' : ''} onPress={() => setCurrentOption('Pendentes')} title="Pendentes" />
       </View>
       {currentOption === 'Finalizadas'
-        ? <AlunoSolicitationList solicitations={finishedSolicitations} />
-        : <AlunoSolicitationList solicitations={inProgressSolicitations} />
+        ? <SolicitacoesDosAlunosLista solicitations={finishedSolicitations} />
+        : <SolicitacoesDosAlunosLista solicitations={inProgressSolicitations} />
       } 
     </SafeAreaView>
   )
 }
-export default MonitoriaDetails;
+export default DetalhesMonitoria;

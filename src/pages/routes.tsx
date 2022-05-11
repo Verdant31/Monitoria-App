@@ -9,15 +9,15 @@ import Login from "./Login";
 import MonitorHome from "./Monitor/Home";
 import MonitorPerfil from "./Monitor/Perfil";
 import Monitorias from "./Monitor/Monitorias";
-import Solicitation from "./Monitor/Home/Solicitation";
 import MonitoriaInfo from "./Aluno/Home/MonitoriaInfo";
 //Student pages
 import AlunoHome from "./Aluno/Home";
 import AlunoPerfil from "./Aluno/Perfil";
-import CreateSolicitation from "./Aluno/CriarSolicitacao";
-import MonitoriaDetails from "./Monitor/Monitorias/MonitoriaDetails";
-import Calendar from "./Monitor/Calendar";
+import CriarSolicitacao from "./Aluno/CriarSolicitacao";
+import Agenda from "./Monitor/Agenda";
 import AgendarHorario from "./Aluno/Home/AgendarHorario";
+import DetalhesMonitoria from "./Monitor/Monitorias/DetalhesMonitoria";
+import Solicitacao from "./Monitor/Home/Solicitacao";
 
 
 
@@ -56,7 +56,7 @@ const MonitorHomeTabs = () => {
           tabBarIcon: () => <Ionicons name="settings" size={24} color="white" />
         }}
       />
-      <Tab.Screen name="Agenda" component={Calendar} 
+      <Tab.Screen name="Agenda" component={Agenda} 
         options={{
           tabBarIcon: () => <Ionicons name="calendar" size={24} color="white" />
         }}
@@ -83,7 +83,7 @@ const AlunoHomeTabs = () => {
         headerShown: false,
       }}
     >
-      <Tab.Screen name="Solicitação" component={CreateSolicitation} 
+      <Tab.Screen name="Solicitação" component={CriarSolicitacao} 
         options={{
           tabBarIcon: () => <Ionicons name="add-circle"  size={28} color="white" />
         }}
@@ -126,7 +126,7 @@ const Routes = () => {
           headerShown: false
         }}
       />
-      <Stack.Screen name="Solicitation" component={Solicitation}
+      <Stack.Screen name="Solicitation" component={Solicitacao}
         options={{
           headerTitleStyle: {
             color: '#f2f2f2'
@@ -150,7 +150,7 @@ const Routes = () => {
           },
         }}
       />
-      <Stack.Screen name="MonitoriaDetails" component={MonitoriaDetails}
+      <Stack.Screen name="MonitoriaDetails" component={DetalhesMonitoria}
         options={{
           headerTitleStyle: {
             color: '#f2f2f2'

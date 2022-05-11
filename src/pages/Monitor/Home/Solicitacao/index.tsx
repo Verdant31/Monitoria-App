@@ -3,7 +3,7 @@ import { Button } from "react-native-elements";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "./styles";
 
-const Solicitation = () => {
+const Solicitacao = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={{fontSize: 24, color: '#f2f2f2', fontWeight: '600'}}>Pré requisitos</Text>
@@ -18,4 +18,4 @@ const Solicitation = () => {
   )
 }
 
-export default Solicitation;
+export default Solicitacao;
