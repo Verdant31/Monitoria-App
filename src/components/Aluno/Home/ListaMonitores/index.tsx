@@ -15,7 +15,7 @@ const ListaMonitores = () => {
     if(item.ehMonitor === true) {
       return item.monitorias.map((monitoria:any)=> {
         return (
-        <TouchableOpacity onPress={() => navigation.navigate('Monitoria')}>
+        <TouchableOpacity key={item.matricula} onPress={() => navigation.navigate('Monitoria')}>
           <View style={styles.monitoriaCard}>
             <Text style={{fontSize: 18, fontWeight: '500'}}>{monitoria.nomeDisciplina}</Text>
             <Text style={{fontSize: 18}}>{item.nome}</Text>
@@ -30,7 +30,7 @@ const ListaMonitores = () => {
   return (
     <View style={{width: '100%'}}>
       <FlatList
-        keyExtractor={(item) => item.matricula}
+        keyExtractor={(item) => item.senha}
         style={{ marginTop: 60 }}
         data={data}
         renderItem={renderItem}

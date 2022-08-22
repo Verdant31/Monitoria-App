@@ -37,7 +37,7 @@ const ListaHorarios = () => {
   return (
     <>
       <FlatList
-        keyExtractor={(item) => item}
+        keyExtractor={(item) => item.valueOf()}
         renderItem={renderItem}
         data={horarios}
         numColumns={3}

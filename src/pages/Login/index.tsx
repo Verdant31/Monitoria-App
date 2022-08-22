@@ -42,13 +42,13 @@ const Login = () => {
       <View style={styles.container}> 
         <SafeAreaView >
           <View>
-            <Image style={styles.logo} resizeMode='contain' source={require('../../../assets/uplogo.png')} />
+            <Image style={styles.logo} resizeMode='contain' source={require('../../../assets/logo.png')} />
           </View>
           <View>
             <Text style={styles.inputLabel}>Matricula</Text>
             <TextInput value={matricula} onChangeText={setMatricula} style={styles.inputField} placeholder="Entre com sua matrícula" placeholderTextColor='#555555' />
             <Text style={styles.inputLabel}>Senha</Text>
-            <TextInput value={senha} onChangeText={setSenha} style={styles.inputField} placeholder="Entre com sua senha" placeholderTextColor='#555555' />
+            <TextInput secureTextEntry value={senha} onChangeText={setSenha} style={styles.inputField} placeholder="Entre com sua senha" placeholderTextColor='#555555' />
           </View>
           {hasError && (
             <View>

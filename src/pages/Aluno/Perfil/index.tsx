@@ -23,7 +23,6 @@ const Perfil = () => {
         <LabelInfo label="Nome" value={aluno?.nome}/>
         <LabelInfo label="Email" value={aluno?.email}/>
         <LabelInfo label="Matrícula" value={aluno?.matricula}/>
-        <LabelInfo label="Telefone" value={aluno?.telefone}/>
         {aluno.ehMonitor
           ? <LabelInfo label="Monitor" value='Sim'/>
           : <LabelInfo label="Monitor" value='Não'/>

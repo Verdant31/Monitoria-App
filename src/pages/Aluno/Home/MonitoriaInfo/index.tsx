@@ -33,8 +33,8 @@ const MonitoriaInfo = () => {
           <Text style={{fontSize: 18, marginTop: 5}}>14:00pm as 16:00pm - Bloco vermelho - Lab 1</Text>
         </View>
         <View style={{marginBottom: 10}}>
-          <Text style={{fontSize: 18, fontWeight: '600'}}>Numero para contato</Text>
-          <Text style={{fontSize: 18, marginTop: 5}}>(67)99973-6552</Text>
+          <Text style={{fontSize: 18, fontWeight: '600'}}>Email para contato</Text>
+          <Text style={{fontSize: 18, marginTop: 5}}>verdantxd@gmail.com</Text>
         </View>
       </View>
       <View style={{width: '100%'}}>

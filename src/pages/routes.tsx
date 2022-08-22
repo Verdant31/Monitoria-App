@@ -51,14 +51,14 @@ const MonitorHomeTabs = () => {
           tabBarIcon: () => <Ionicons name="home" size={24} color="white" />
         }}
       />
-      <Tab.Screen name="Perfil" component={MonitorPerfil} 
-        options={{
-          tabBarIcon: () => <Ionicons name="settings" size={24} color="white" />
-        }}
-      />
       <Tab.Screen name="Agenda" component={Agenda} 
         options={{
           tabBarIcon: () => <Ionicons name="calendar" size={24} color="white" />
+        }}
+      />
+      <Tab.Screen name="Perfil" component={MonitorPerfil} 
+        options={{
+          tabBarIcon: () => <Ionicons name="settings" size={24} color="white" />
         }}
       />
     </Tab.Navigator>

@@ -6,14 +6,22 @@ import { styles } from './styles';
 //React navigation
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../../pages/RootStackParams';
+import { useNavigation } from '@react-navigation/native';
 
 interface DialogProps {
   isOpen: boolean;
   closeModal: () => void;
 }
 
-const ConfirmarReuniaoDialog = ({isOpen, closeModal}: DialogProps) => {
+type AlunoProps = NativeStackNavigationProp<RootStackParamList, 'Aluno'>;
 
+
+const ConfirmarReuniaoDialog = ({isOpen, closeModal}: DialogProps) => {
+  const navigation = useNavigation<AlunoProps>();
+  const handleConfirmacaoAgendamento = () => {
+    navigation.navigate("Aluno")
+    closeModal();
+  }
   return (
     <Provider>
       <View style={{height: Dimensions.get('window').height}}>
@@ -34,7 +42,7 @@ const ConfirmarReuniaoDialog = ({isOpen, closeModal}: DialogProps) => {
                 Horário: 16:00 do dia 18/05/2022 - Bloco Vermelho
               </Paragraph>
               <View style={styles.buttonsContainer}>
-                <Button title="Confirmar" />
+                <Button title="Confirmar" onPress={handleConfirmacaoAgendamento}/>
               </View>
             </Dialog.Content>
             <Dialog.Actions>
