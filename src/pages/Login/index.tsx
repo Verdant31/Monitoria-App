@@ -25,8 +25,8 @@ const Login = () => {
   const { signIn } = useAuth();
 
   const closeModal = () => setIsModalOpen(false)
-  const handleLogin = () => {
-    const { isMonitor, rightCredentials } = signIn(matricula, senha);
+  const handleLogin = async () => {
+    const { isMonitor, rightCredentials } =  await signIn(matricula, senha);
     setMatricula('');
     setSenha('');
     if(!rightCredentials) {

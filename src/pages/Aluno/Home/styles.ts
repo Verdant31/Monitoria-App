@@ -12,5 +12,9 @@ export const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#f2f2f2',
     paddingTop:40,
-  }
+  },
+  searchBar: {
+    marginTop: 40,
+    width: '80%',
+  },
 })

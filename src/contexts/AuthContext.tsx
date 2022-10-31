@@ -5,10 +5,13 @@ import { Aluno } from '../utils/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../pages/RootStackParams';
 import { useNavigation } from '@react-navigation/native';
+import { api } from '../services/axios';
+import * as SecureStore from 'expo-secure-store';
+
 
 type AuthContextType = {
   aluno: Aluno | undefined;
-  signIn: (matricula: string, senha: string) => {isMonitor: boolean, rightCredentials: boolean }; 
+  signIn: (matricula: string, senha: string) => Promise<{isMonitor: boolean, rightCredentials: boolean }>; 
   signOut: () => void;
 }
 
@@ -24,17 +27,24 @@ const AuthContextProvider = (props: AuthContextProviderPros) => {
   const [ aluno, setAluno ] = useState<Aluno | undefined>();
   const navigation = useNavigation<AuthContextProps>();
 
-  const signIn = (matricula: string, senha: string) => {
+  const signIn = async (matricula: string, senha: string) => {
     let isMonitor = false;
     let rightCredentials = false;
-    data.map((aluno) => {
-      if(matricula === aluno.matricula && senha === aluno.senha) {
-        setAluno(aluno)
-        rightCredentials = true;
-        if(aluno.ehMonitor === true) {
-          isMonitor = true;
-        }
-      }
+    await api.post('auth/login/aluno', {
+      matricula,
+      senha,
+    }).then(async res => {
+      setAluno({
+        nome: res.data.nome,
+        matricula, 
+        ehMonitor: res.data.role === "aluno" ? false : true,
+      })
+      await SecureStore.setItemAsync('token', res.data.token);
+      api.defaults.headers.common.Authorization = `${res.data.token}`;
+      rightCredentials = true;
+      isMonitor = res.data.role === "aluno" ? false : true;
+    }).catch(err => {
+      console.log(err)
     })
     return {isMonitor: isMonitor, rightCredentials: rightCredentials};
   }
