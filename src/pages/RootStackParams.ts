@@ -6,7 +6,7 @@ export type RootStackParamList = {
   Monitor: undefined;
   Aluno: undefined;
   Solicitation: undefined;
-  Monitoria: undefined;
+  Monitoria: {id_monitoria: string, id_monitor: string};
   CreateSolicitation: undefined;
   MonitoriaDetails: { codigoDisciplina: string}
   AgendarHorario: undefined;
