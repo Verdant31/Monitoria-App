@@ -37,12 +37,12 @@ const AuthContextProvider = (props: AuthContextProviderPros) => {
       setAluno({
         nome: res.data.nome,
         matricula, 
-        ehMonitor: res.data.role === "aluno" ? false : true,
+        ehMonitor: res.data.eh_monitor
       })
       await SecureStore.setItemAsync('token', res.data.token);
       api.defaults.headers.common.Authorization = `${res.data.token}`;
       rightCredentials = true;
-      isMonitor = res.data.role === "aluno" ? false : true;
+      isMonitor = res.data.eh_monitor
     }).catch(err => {
       console.log(err)
     })

@@ -2,7 +2,6 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useEffect, useState } from "react";
 import { FlatList, Text, TouchableOpacity, View } from "react-native"
-import data from '../../../../../alunos.json';
 import { RootStackParamList } from "../../../../pages/RootStackParams";
 import { api } from "../../../../services/axios";
 import { styles } from './styles';

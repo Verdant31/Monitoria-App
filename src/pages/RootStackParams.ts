@@ -5,7 +5,7 @@ export type RootStackParamList = {
   AuthContext: { aluno: Aluno }
   Monitor: undefined;
   Aluno: undefined;
-  Solicitation: undefined;
+  Solicitation: { id_solicitacao: string };
   Monitoria: {id_monitoria: string, id_monitor: string};
   CreateSolicitation: undefined;
   MonitoriaDetails: { codigoDisciplina: string}

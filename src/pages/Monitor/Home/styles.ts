@@ -11,5 +11,9 @@ export const styles = StyleSheet.create({
     fontSize: 32,
     paddingTop: 40,
     color: 'white'
-  }
+  },
+  searchBar: {
+    marginTop: 40,
+    width: '80%',
+  },
 })
