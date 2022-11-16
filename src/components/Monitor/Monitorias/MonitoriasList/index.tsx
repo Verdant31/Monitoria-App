@@ -35,7 +35,6 @@ const MonitoriasList = () => {
     fetchSolicitacoes();
   },[])
 
-
   const renderItem = ({ item }:any) => {
     return (
       <TouchableOpacity onPress={() => navigation.navigate('MonitoriaDetails', {codigoDisciplina: item.disciplina.codigo_disciplina})}>

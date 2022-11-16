@@ -49,7 +49,7 @@ const ListaMonitores = ({filter} : ListaMonitoresProps) => {
   }
 
   return (
-    <View style={{width: '100%'}}>
+    <View style={{width: '100%', marginTop: -40}}>
       <FlatList
         keyExtractor={(monitoria) => monitoria.id}
         style={{ marginTop: 60 }}

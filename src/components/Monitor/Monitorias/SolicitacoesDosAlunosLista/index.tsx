@@ -7,7 +7,7 @@ interface AlunoSolicitationList {
 }
 
 const SolicitacoesDosAlunosLista = ({solicitations}: AlunoSolicitationList) => {
-
+  //TODO - Pegar as solicitações da monitoria escolhida
   const renderItem = ({ item }:any) => (
     <View style={item.finalizada === true ? styles(100).solicitationCard : styles(140).solicitationCard}> 
       <Text style={{fontSize: 18, fontWeight: '500'}}>Aluno: {item.nomeAluno}</Text>

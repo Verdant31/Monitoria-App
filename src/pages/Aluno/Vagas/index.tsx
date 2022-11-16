@@ -6,18 +6,18 @@ import { styles } from './styles';
 import ListaDeSolicitacoes from '../../../components/Monitor/Home/ListaDeSolicitacoes';
 import { Searchbar } from 'react-native-paper';
 
-const Home = () => {
+const Vagas = () => {
   const [ filter, setFilter ] = useState('');
 
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title} >Solicitações</Text>
+      <Text style={styles.title} >Vagas abertas</Text>
       <View>
         <Searchbar 
           value={filter}
           onChangeText={setFilter}
-          placeholder="Procure por uma solicitação..."
+          placeholder="Procure por uma vaga..."
           style={styles.searchBar}
         />
       </View>
@@ -26,4 +26,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Vagas

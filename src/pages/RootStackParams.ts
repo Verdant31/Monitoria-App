@@ -10,4 +10,5 @@ export type RootStackParamList = {
   CreateSolicitation: undefined;
   MonitoriaDetails: { codigoDisciplina: string}
   AgendarHorario: undefined;
+  Candidaturas: undefined;
 }

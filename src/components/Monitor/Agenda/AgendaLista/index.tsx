@@ -5,6 +5,7 @@ import { Meeting, Solicitacao } from "../../../../utils/types";
 import { styles } from "./styles";
 
 const AgendaLista = () => {
+  //TODO - Pegar as monitorias do aluno logado
   const [ meetings, setMeetings ] = useState<Meeting[]>([]);
   const { aluno } = useAuth();
 

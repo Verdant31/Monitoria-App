@@ -21,7 +21,6 @@ interface ListaDeSolicitacoesProps {
 }
 
 const ListaDeSolicitacoes = ({filter} : ListaDeSolicitacoesProps) => {
-  //TODO - Mudar a chave do map
   const [ solicitacoes, setSolicitacoes ] = useState<Solicitacao[]>([]);
   const navigation = useNavigation<MonitorProps>();
 
@@ -40,7 +39,7 @@ const ListaDeSolicitacoes = ({filter} : ListaDeSolicitacoesProps) => {
     return (
       <TouchableOpacity onPress={() => navigation.navigate('Solicitation', { id_solicitacao: item.id})}>
         <View style={styles.solicitationCard} key={item.id}>
-          <Text style={{fontSize: 18, fontWeight: '500'}}>{item.nome_disciplina}</Text>
+          <Text style={{fontSize: 18, fontWeight: '600'}}>{item.nome_disciplina}</Text>
           <Text style={{fontSize: 18}}>{item.nome_professor}</Text>
           <Text style={{fontSize: 18}}>Código: {item.codigo_disciplina}</Text>
         </View>
@@ -55,7 +54,6 @@ const ListaDeSolicitacoes = ({filter} : ListaDeSolicitacoesProps) => {
           data={filteredSolicitacoes.length > 0 ? filteredSolicitacoes : solicitacoes}
           renderItem={renderItem}
         />
-      
     </View>
   )
 }
