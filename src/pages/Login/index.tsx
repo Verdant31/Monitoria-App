@@ -44,7 +44,7 @@ const Login = () => {
           <View>
             <Image style={styles.logo} resizeMode='contain' source={require('../../../assets/logo.png')} />
           </View>
-          <View>
+          <View style={{marginTop: -40}}>
             <Text style={styles.inputLabel}>Matricula</Text>
             <TextInput value={matricula} onChangeText={setMatricula} style={styles.inputField} placeholder="Entre com sua matrícula" placeholderTextColor='#555555' />
             <Text style={styles.inputLabel}>Senha</Text>

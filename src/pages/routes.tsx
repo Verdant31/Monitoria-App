@@ -1,12 +1,10 @@
 //React navigation
-import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 //Components
 import Login from "./Login";
 //Monitor pages
-import MonitorHome from "./Monitor/Home";
 import MonitorPerfil from "./Monitor/Perfil";
 import Monitorias from "./Monitor/Monitorias";
 import MonitoriaInfo from "./Aluno/Home/MonitoriaInfo";
@@ -17,7 +15,10 @@ import CriarSolicitacao from "./Aluno/CriarSolicitacao";
 import Agenda from "./Monitor/Agenda";
 import AgendarHorario from "./Aluno/Home/AgendarHorario";
 import DetalhesMonitoria from "./Monitor/Monitorias/DetalhesMonitoria";
-import Solicitacao from "./Monitor/Home/Solicitacao";
+import AgendaAluno from "./Aluno/Home/Agenda";
+import Candidaturas from "./Aluno/Candidaturas";
+import Vagas from "./Aluno/Vagas";
+import Solicitacao from "./Aluno/Vagas/Solicitacao";
 
 
 
@@ -32,11 +33,13 @@ const MonitorHomeTabs = () => {
           height: 90,
           backgroundColor: '#003B71',
           borderTopWidth: 0,
+          paddingTop: 20
         },
         tabBarLabelStyle: {
-          fontSize: 16,
-          color: 'white'
-        },
+          fontSize: 14,
+          color: 'white',
+          paddingBottom: 15,
+        }, 
         headerShadowVisible: false,
         headerShown: false,
       }}
@@ -44,11 +47,6 @@ const MonitorHomeTabs = () => {
       <Tab.Screen name="Monitorias" component={Monitorias} 
         options={{
           tabBarIcon: () => <Ionicons name="newspaper" size={24} color="white" />
-        }}
-      />
-      <Tab.Screen name="Home" component={MonitorHome} 
-        options={{
-          tabBarIcon: () => <Ionicons name="home" size={24} color="white" />
         }}
       />
       <Tab.Screen name="Agenda" component={Agenda} 
@@ -73,11 +71,12 @@ const AlunoHomeTabs = () => {
           height: 90,
           backgroundColor: '#003B71',
           borderTopWidth: 0,
-          paddingTop: 5
+          paddingTop: 20
         },
         tabBarLabelStyle: {
-          fontSize: 16,
-          color: 'white'
+          fontSize: 14,
+          color: 'white',
+          paddingBottom: 15,
         }, 
         headerShadowVisible: false,
         headerShown: false,
@@ -88,9 +87,19 @@ const AlunoHomeTabs = () => {
           tabBarIcon: () => <Ionicons name="add-circle"  size={28} color="white" />
         }}
       />
+      <Tab.Screen name="Vagas" component={Vagas} 
+        options={{
+          tabBarIcon: () => <Ionicons name="md-file-tray-full-sharp" size={24} color="white" />
+        }}
+      />
       <Tab.Screen name="Home" component={AlunoHome} 
         options={{
           tabBarIcon: () => <Ionicons name="home" size={24} color="white" />
+        }}
+      />
+      <Tab.Screen name="Agenda" component={AgendaAluno} 
+        options={{
+          tabBarIcon: () => <Ionicons name="calendar" size={24} color="white" />
         }}
       />
       <Tab.Screen name="Perfil" component={AlunoPerfil} 
@@ -126,7 +135,7 @@ const Routes = () => {
           headerShown: false
         }}
       />
-      <Stack.Screen name="Solicitation" component={Solicitacao}
+      <Stack.Screen name="Solicitacao" component={Solicitacao}
         options={{
           headerTitleStyle: {
             color: '#f2f2f2'
@@ -168,6 +177,18 @@ const Routes = () => {
             color: '#f2f2f2'
           },
           headerTitle: 'Agendamento',
+          headerShadowVisible: false,
+          headerStyle: {
+            backgroundColor: '#003B71',
+          },
+        }}
+      />
+      <Stack.Screen name="Candidaturas" component={Candidaturas} 
+        options={{
+          headerTitleStyle: {
+            color: '#f2f2f2'
+          },
+          headerTitle: 'Candidaturas',
           headerShadowVisible: false,
           headerStyle: {
             backgroundColor: '#003B71',

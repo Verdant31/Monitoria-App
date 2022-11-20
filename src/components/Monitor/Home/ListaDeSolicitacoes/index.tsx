@@ -1,35 +1,59 @@
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useEffect, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
-import data from '../../../../../solicitacoes.json';
 import { RootStackParamList } from '../../../../pages/RootStackParams';
+import { api } from '../../../../services/axios';
 import { styles } from './styles';
 
 type MonitorProps = NativeStackNavigationProp<RootStackParamList, 'Monitor'>;
 
+type Solicitacao = {
+  id: string;
+  codigo_disciplina: string;
+  nome_disciplina: string;
+  nome_professor: string;
+  pre_requisito: string;
+}
 
-const ListaDeSolicitacoes = () => {
+interface ListaDeSolicitacoesProps {
+  filter: string;
+}
+
+const ListaDeSolicitacoes = ({filter} : ListaDeSolicitacoesProps) => {
+  const [ solicitacoes, setSolicitacoes ] = useState<Solicitacao[]>([]);
   const navigation = useNavigation<MonitorProps>();
 
-  const renderItem = ({ item }:any) => (
-    <TouchableOpacity onPress={() => navigation.navigate('Solicitation')}>
-      <View style={styles.solicitationCard} key={item.codigo}>
-        <Text style={{fontSize: 18, fontWeight: '500'}}>{item.disciplina}</Text>
-        <Text style={{fontSize: 18}}>{item.professor}</Text>
-        <Text style={{fontSize: 18}}>Código: {item.codigo}</Text>
-      </View>
-    </TouchableOpacity>
-  );
+  const filteredSolicitacoes = solicitacoes.filter(solicitacao => solicitacao.nome_disciplina.includes(filter));
+
+  useEffect(() => {
+    const fetchSolicitacoes = async () => {
+      await api.get('/aluno/vagasmonitoria').then(res => {
+        setSolicitacoes(res.data.vagas_monitorias)
+      }).catch(err => console.log(err))
+    }
+    fetchSolicitacoes();
+  },[])
+
+  const renderItem = ({ item }:any) => {
+    return (
+      <TouchableOpacity onPress={() => navigation.navigate('Solicitacao', { vaga: item.id})}>
+        <View style={styles.solicitationCard} key={item.id}>
+          <Text style={{fontSize: 18, fontWeight: '600'}}>{item.nome_disciplina}</Text>
+          <Text style={{fontSize: 18}}>{item.nome_professor}</Text>
+          <Text style={{fontSize: 18}}>Código: {item.codigo_disciplina}</Text>
+        </View>
+      </TouchableOpacity>
+    )
+  };
 
   return (
     <View style={styles.listContainer}>
         <FlatList
-          keyExtractor={(item) => item.codigo}
           style={{ marginTop: 60 }}
-          data={data}
+          data={filteredSolicitacoes.length > 0 ? filteredSolicitacoes : solicitacoes}
           renderItem={renderItem}
         />
-      
     </View>
   )
 }

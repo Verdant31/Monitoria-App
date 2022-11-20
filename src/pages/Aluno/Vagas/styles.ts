@@ -8,17 +8,12 @@ export const styles = StyleSheet.create({
     alignItems: 'center'
   },
   title: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: '#f2f2f2',
+    fontSize: 32,
+    paddingTop: 40,
+    color: 'white'
   },
-  requirementsContainer: {
+  searchBar: {
+    marginTop: 40,
     width: '80%',
-    backgroundColor: '#f2f2f2',
-    borderRadius: 5,
-    padding: 12,
-    marginTop: 30,
-    marginBottom: 30,
   },
-
 })

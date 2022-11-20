@@ -39,7 +39,7 @@ const CriarSolicitacao = () => {
           <TextInput  onChangeText={setMotivo} style={styles.input} placeholder="Entre com a descrição" placeholderTextColor='#555555' />
         </View>
       </View>
-      <View style={{width: '100%'}}>
+      <View style={{width: '80%', marginTop: 20}}>
         <Button onPress={handleEnviarSolicitacao} style={styles.updateButton} title="Enviar solicitação" />
       </View>
     </SafeAreaView>

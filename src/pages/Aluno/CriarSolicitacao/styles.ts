@@ -25,8 +25,8 @@ export const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 2,
-    paddingLeft: 5,
-    height: 30,
+    paddingLeft: 12,
+    height: 35,
     marginTop: 12,
     width: '90%',
     borderColor: '#003B71'

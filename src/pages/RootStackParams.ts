@@ -5,9 +5,10 @@ export type RootStackParamList = {
   AuthContext: { aluno: Aluno }
   Monitor: undefined;
   Aluno: undefined;
-  Solicitation: undefined;
+  Solicitacao: { vaga: string };
   Monitoria: {id_monitoria: string, id_monitor: string};
   CreateSolicitation: undefined;
-  MonitoriaDetails: { codigoDisciplina: string}
-  AgendarHorario: undefined;
+  MonitoriaDetails: { codigo_monitoria: string}
+  AgendarHorario: {id_monitoria: string,  monitor: string, disciplina: string, dia: string};
+  Candidaturas: undefined;
 }

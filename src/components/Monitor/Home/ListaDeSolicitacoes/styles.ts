@@ -3,14 +3,15 @@ import { StyleSheet } from "react-native"
 export const styles = StyleSheet.create({
   listContainer: {
     width: '100%',
+    height: '74%'
   },
   solicitationCard: {
-    height: 90,
     width: '80%',
     alignSelf: 'center',
+    justifyContent:'center',
     backgroundColor: '#f2f2f2',
+    padding: 12,
     borderRadius: 5,
-    padding: 13,
     marginBottom: 30
   }
 })

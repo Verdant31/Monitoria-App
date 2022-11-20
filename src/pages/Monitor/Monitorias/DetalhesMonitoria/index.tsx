@@ -1,46 +1,53 @@
 import { useEffect, useState } from "react";
-import { Button, Text, TouchableOpacity, View } from "react-native"
+import { Button, Text, View } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from './styles';
-import data from '../../../../../alunos.json';
-import { Solicitacao } from '../../../../utils/types';
-import { useAuth } from "../../../../contexts/AuthContext";
-import { NativeStackNavigationProp, NativeStackScreenProps } from "@react-navigation/native-stack";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../../RootStackParams";
 import SolicitacoesDosAlunosLista from "../../../../components/Monitor/Monitorias/SolicitacoesDosAlunosLista";
+import { api } from "../../../../services/axios";
+
+type Details = {
+  horario : string;
+  nome_aluno : string;
+  matricula_aluno : string;
+  status : string;
+  id_agendamento: string;
+}
 
 type MonitoriaDetails = NativeStackScreenProps<RootStackParamList, 'MonitoriaDetails'>;
 
 const DetalhesMonitoria = ({ route }: MonitoriaDetails) => {
   const [ currentOption, setCurrentOption ] = useState('Finalizadas' || 'Pendentes')
-  const [ finishedSolicitations, setFinishedSolicitations ] = useState<Solicitacao[]>([]);
-  const [ inProgressSolicitations, setInProgressSolicitations ] = useState<Solicitacao[]>([]); 
-  const { aluno } = useAuth();
+  const [ finishedSolicitations, setFinishedSolicitations ] = useState<Details[]>([]);
+  const [ inProgressSolicitations, setInProgressSolicitations ] = useState<Details[]>([]); 
 
   useEffect(() => {
-    if(aluno?.monitorias) {
-      aluno.monitorias.map((monitoria) => {
-        if(monitoria.codigoDisciplina === route.params.codigoDisciplina && monitoria.solicitacoes) {
-          monitoria.solicitacoes.map((solicitation) => {
-            if(solicitation.finalizada === true) setFinishedSolicitations(oldState => [...oldState, solicitation])
-            if(solicitation.finalizada === false) setInProgressSolicitations(oldState => [...oldState, solicitation])
-          })
-        }
-      })
+    const fetchSolicitacoes = async () => {
+      await api.get(`aluno/monitor/agendamento/${route.params.codigo_monitoria}`).then(res => {
+        res.data.agendamentos.map((monitoria : Details) => {
+          if(monitoria.status === 'Aprovado') setFinishedSolicitations(oldState => [...oldState, monitoria])
+          if(monitoria.status === 'Pendente') setInProgressSolicitations(oldState => [...oldState, monitoria])
+        })
+      }).catch(err => console.log(err))
     }
-  },[])
+    fetchSolicitacoes();
+  }, []);
 
+  const removeFromList = (id: string) => {
+    setInProgressSolicitations(oldState => oldState.filter(solicitation => solicitation.id_agendamento !== id))
+  }
 
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Solicitações</Text>    
       <View style={styles.optionsContainer}>
-        <Button color={currentOption === 'Finalizadas' ? '' : 'white'}onPress={() => setCurrentOption('Finalizadas')} title="Finalizadas" />
+        <Button color={currentOption === 'Finalizadas' ? '': 'white'}onPress={() => setCurrentOption('Finalizadas')} title="Finalizadas" />
         <Button color={currentOption === 'Finalizadas' ? 'white' : ''} onPress={() => setCurrentOption('Pendentes')} title="Pendentes" />
       </View>
       {currentOption === 'Finalizadas'
-        ? <SolicitacoesDosAlunosLista solicitations={finishedSolicitations} />
-        : <SolicitacoesDosAlunosLista solicitations={inProgressSolicitations} />
+        ? <SolicitacoesDosAlunosLista solicitations={finishedSolicitations} removeFromList={removeFromList} />
+        : <SolicitacoesDosAlunosLista solicitations={inProgressSolicitations} removeFromList={removeFromList} />
       } 
     </SafeAreaView>
   )

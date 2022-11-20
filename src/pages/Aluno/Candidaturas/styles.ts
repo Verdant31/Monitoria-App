@@ -7,16 +7,22 @@ export const styles = StyleSheet.create({
     backgroundColor: '#003B71',
     alignItems: 'center'
   },
-  requirementsContainer: {
-    width: '80%',
-    backgroundColor: '#f2f2f2',
-    borderRadius: 5,
-    padding: 12,
-    marginTop: 30
+  title: {
+    fontSize: 24,
+    fontWeight: '600',
+    color: '#f2f2f2',
   },
-  updateButton: {
-    width: 330,
+  listContainer: {
+    width: '100%',
+    height: '74%'
+  },
+  solicitationCard: {
+    width: '80%',
     alignSelf: 'center',
-    marginTop: 40
+    justifyContent:'center',
+    backgroundColor: '#f2f2f2',
+    padding: 12,
+    borderRadius: 5,
+    marginBottom: 30
   }
 })

@@ -9,8 +9,6 @@ export const styles = StyleSheet.create({
   },
   logo: {
     width: 280,
-    marginBottom: 40,
-    marginTop: 40
   },
   inputLabel: {
     paddingLeft: 2,

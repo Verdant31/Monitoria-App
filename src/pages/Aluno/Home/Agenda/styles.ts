@@ -9,7 +9,13 @@ export const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
-    paddingTop: 40,
-    color: 'white'
+    paddingTop: 25,
+    color: 'white',
+    fontWeight: '500'
+  },
+  subTitle: {
+    fontSize: 22,
+    paddingTop: 15,
+    color: '#f2f2f2'
   }
 })
