@@ -1,36 +1,62 @@
 import { Button, FlatList, Text, TouchableOpacity, View } from "react-native";
-import { Solicitacao } from "../../../../utils/types";
+import { api } from "../../../../services/axios";
 import { styles } from './styles';
 
+type Details = {
+  horario : string;
+  nome_aluno : string;
+  matricula_aluno : string;
+  status : string;
+  id_agendamento: string;
+}
 interface AlunoSolicitationList {
-  solicitations: Solicitacao[] | undefined;
+  solicitations: Details[] | undefined;
+  removeFromList: (id: string) => void;
 }
 
-const SolicitacoesDosAlunosLista = ({solicitations}: AlunoSolicitationList) => {
-  //TODO - Pegar as solicitações da monitoria escolhida
-  const renderItem = ({ item }:any) => (
-    <View style={item.finalizada === true ? styles(100).solicitationCard : styles(140).solicitationCard}> 
-      <Text style={{fontSize: 18, fontWeight: '500'}}>Aluno: {item.nomeAluno}</Text>
-      <Text style={{fontSize: 18}}>Horario desejado: {item.agendamento}</Text>
-      <Text style={{fontSize: 18}}>Matrícula: {item.matriculaAluno}</Text>
-      {!item.finalizada && 
-        (
-          <View style={styles().buttonsContainer}>
-            <TouchableOpacity style={{ width: '45%' }}>
-              <Button onPress={()=> console.log('hehe')} title="Finalizar" />
-            </TouchableOpacity>
-            <TouchableOpacity style={{ width: '45%' }}>
-              <Button onPress={()=> console.log('hehe')} title="Excluir" />
-            </TouchableOpacity>
-          </View>
-        )}
-    </View>
-  );
+
+const SolicitacoesDosAlunosLista = ({solicitations, removeFromList}: AlunoSolicitationList) => {
+  async function reprovarSolicitacao(id: string) {
+    await api.put('aluno/monitor/agendamento/cancelar', {
+      id_agendamento: id,
+    }).then(()=> {
+      removeFromList(id);
+    }).catch((err) => console.log(err))
+  }
+
+  async function aprovarSolicitacao(id: string) {
+    await api.put('aluno/monitor/agendamento/aprovar', {
+      id_agendamento: id,
+    }).then(()=> {
+      removeFromList(id);
+    }).catch((err) => console.log(err))
+  }
+
+  const renderItem = ({ item }:any) => {
+    return (
+      <View style={item.status === 'Aprovado' ? styles(100).solicitationCard : styles(140).solicitationCard}> 
+        <Text style={{fontSize: 18, fontWeight: '500'}}>Aluno: {item.nome_aluno}</Text>
+        <Text style={{fontSize: 18}}>Horario desejado: {(new Date(item.horario).toLocaleTimeString())}</Text>
+        <Text style={{fontSize: 18}}>Matrícula: {item.matricula_aluno}</Text>
+        {item.status === 'Pendente' && 
+          (
+            <View style={styles().buttonsContainer}>
+              <TouchableOpacity style={{ width: '45%' }}>
+                <Button onPress={()=> aprovarSolicitacao(item.id_agendamento)} title="Aprovar" />
+              </TouchableOpacity>
+              <TouchableOpacity style={{ width: '45%' }}>
+                <Button onPress={()=> reprovarSolicitacao(item.id_agendamento)} title="Reprovar" />
+              </TouchableOpacity>
+            </View>
+          )}
+      </View>
+    );
+  }
 
   return (
     <View style={{width: '100%'}}>
       <FlatList
-        keyExtractor={(item) => item.dataSolicitacao}
+        keyExtractor={(item) => item.id_agendamento}
         style={{ marginTop: 60 }}
         data={solicitations}
         renderItem={renderItem}

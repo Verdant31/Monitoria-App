@@ -33,11 +33,13 @@ const MonitorHomeTabs = () => {
           height: 90,
           backgroundColor: '#003B71',
           borderTopWidth: 0,
+          paddingTop: 20
         },
         tabBarLabelStyle: {
-          fontSize: 16,
-          color: 'white'
-        },
+          fontSize: 14,
+          color: 'white',
+          paddingBottom: 15,
+        }, 
         headerShadowVisible: false,
         headerShown: false,
       }}
@@ -133,7 +135,7 @@ const Routes = () => {
           headerShown: false
         }}
       />
-      <Stack.Screen name="Solicitation" component={Solicitacao}
+      <Stack.Screen name="Solicitacao" component={Solicitacao}
         options={{
           headerTitleStyle: {
             color: '#f2f2f2'

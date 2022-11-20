@@ -8,6 +8,7 @@ import { api } from "../../../../services/axios";
 import { styles } from './styles';
 
 type MonitorProps = NativeStackNavigationProp<RootStackParamList, 'Monitor'>;
+
 type Monitoria = {
   disciplina: {
     codigo_disciplina: string;
@@ -22,9 +23,7 @@ type Monitoria = {
 
 const MonitoriasList = () => {
   const [ monitorias, setMonitorias ] = useState<Monitoria[]>();
-  const { aluno } = useAuth();
   const navigation = useNavigation<MonitorProps>();
-
 
   useEffect(() => {
     const fetchSolicitacoes = async () => {
@@ -37,7 +36,7 @@ const MonitoriasList = () => {
 
   const renderItem = ({ item }:any) => {
     return (
-      <TouchableOpacity onPress={() => navigation.navigate('MonitoriaDetails', {codigoDisciplina: item.disciplina.codigo_disciplina})}>
+      <TouchableOpacity onPress={() => navigation.navigate('MonitoriaDetails', {codigo_monitoria: item.id})}>
         <View style={styles.monitoriaCard}>
           <Text style={{fontSize: 18, fontWeight: '500'}}>{item.disciplina.nome}</Text>
           <Text style={{fontSize: 18}}>{item.disciplina.colaborador.nome}</Text>

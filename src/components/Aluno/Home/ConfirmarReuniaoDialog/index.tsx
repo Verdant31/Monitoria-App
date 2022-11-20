@@ -1,4 +1,3 @@
-import {useEffect, useState} from 'react';
 import { Dimensions, View } from 'react-native';
 import { Button } from 'react-native-elements';
 import { Button as ButtonPaper, Paragraph, Dialog, Portal, Provider } from 'react-native-paper';
@@ -7,21 +6,35 @@ import { styles } from './styles';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../../pages/RootStackParams';
 import { useNavigation } from '@react-navigation/native';
-
+import { api } from '../../../../services/axios';
 interface DialogProps {
   isOpen: boolean;
   closeModal: () => void;
+  data: {
+    horario: string;
+    disciplina: string;
+    monitor: string;
+    dia: string[];
+    idMonitoria: string;
+  }
 }
 
 type AlunoProps = NativeStackNavigationProp<RootStackParamList, 'Aluno'>;
 
-
-const ConfirmarReuniaoDialog = ({isOpen, closeModal}: DialogProps) => {
+const ConfirmarReuniaoDialog = ({isOpen, closeModal, data}: DialogProps) => {
   const navigation = useNavigation<AlunoProps>();
-  const handleConfirmacaoAgendamento = () => {
+  const handleConfirmacaoAgendamento = async () => {
     navigation.navigate("Aluno")
-    closeModal();
+    await api.post('/aluno/agendar/monitoria/', {
+        horario: data.horario, 
+        data: [ data.dia[1], data.dia[0], data.dia[2] ].join('/'),
+        id_monitoria: data.idMonitoria
+      })
+    .then(() => {
+      closeModal();
+    });
   }
+
   return (
     <Provider>
       <View style={{height: Dimensions.get('window').height}}>
@@ -33,13 +46,13 @@ const ConfirmarReuniaoDialog = ({isOpen, closeModal}: DialogProps) => {
                 Confirme os dados da sua solicitação de monitoria.
               </Paragraph>
               <Paragraph>
-                Monitor: João Pedro Pivoesan
+                Monitor: {data.monitor}
               </Paragraph>
               <Paragraph>
-                Disciplina: Sistemas Inteligentes Avançados
+                Disciplina: {data.disciplina}
               </Paragraph>
               <Paragraph>
-                Horário: 16:00 do dia 18/05/2022 - Bloco Vermelho
+                Horário: {data.horario} do dia {[ data.dia[1], data.dia[0], data.dia[2] ].join('/')}
               </Paragraph>
               <View style={styles.buttonsContainer}>
                 <Button title="Confirmar" onPress={handleConfirmacaoAgendamento}/>

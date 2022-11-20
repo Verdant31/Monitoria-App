@@ -1,45 +1,27 @@
-import { useEffect, useState } from "react";
 import { FlatList, Text, View } from "react-native";
-import { useAuth } from "../../../../contexts/AuthContext";
-import { Meeting, Solicitacao } from "../../../../utils/types";
 import { styles } from "./styles";
-
-const AgendaLista = () => {
-  //TODO - Pegar as monitorias do aluno logado
-  const [ meetings, setMeetings ] = useState<Meeting[]>([]);
-  const { aluno } = useAuth();
-
-  useEffect(() => {
-    if(aluno?.monitorias) {
-      aluno.monitorias.map((monitoria) => {
-        if(monitoria.solicitacoes) {
-          monitoria.solicitacoes.map((solicitation) => {
-            const meeting : Meeting = {
-              agendamento: solicitation.agendamento,
-              nomeAluno: solicitation.nomeAluno,
-              disciplina: monitoria.nomeDisciplina,
-              matriculaAluno: solicitation.matriculaAluno
-            }
-            setMeetings(oldState => [...oldState, meeting])
-          })
-        }
-      })
-    }
-  },[])
-
+type Horario = {
+  nome: string;
+  horario: string;
+  nome_disciplina: string;
+}
+interface AgendaLista {
+  horarios: Horario[];
+}
+const AgendaLista = ({ horarios }: AgendaLista) => {
   const renderItem = ({ item }:any) => (
     <View style={styles.meetingCard}> 
-      <Text style={{fontSize: 18, fontWeight: '500'}}>Horário: {item.agendamento}</Text>
-      <Text style={{fontSize: 18}}>Aluno: {item.nomeAluno}</Text>
-      <Text style={{fontSize: 18}}>Disciplina: {item.disciplina}</Text>
+      <Text style={{fontSize: 18, fontWeight: '500'}}>Horário: {item.horario}</Text>
+      <Text style={{fontSize: 18}}>Aluno: {item.nome}</Text>
+      <Text style={{fontSize: 18}}>Disciplina: {item.nome_disciplina}</Text>
     </View>
   );
   return (
     <View style={styles.container}>
         <FlatList
-          keyExtractor={(item) => item.matriculaAluno}
+          keyExtractor={(item) => item.horario}
           style={{ marginTop: 60 }}
-          data={meetings}
+          data={horarios}
           renderItem={renderItem}
         />
     </View>

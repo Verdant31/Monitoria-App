@@ -12,11 +12,11 @@ export const styles = StyleSheet.create({
     backgroundColor: '#f2f2f2',
     borderRadius: 5,
     padding: 12,
-    marginTop: 30
+    marginTop: 30,
+    marginBottom: 20,
   },
   updateButton: {
     width: 330,
     alignSelf: 'center',
-    marginTop: 40
   }
 })

@@ -37,7 +37,7 @@ const ListaDeSolicitacoes = ({filter} : ListaDeSolicitacoesProps) => {
 
   const renderItem = ({ item }:any) => {
     return (
-      <TouchableOpacity onPress={() => navigation.navigate('Solicitation', { id_solicitacao: item.id})}>
+      <TouchableOpacity onPress={() => navigation.navigate('Solicitacao', { vaga: item.id})}>
         <View style={styles.solicitationCard} key={item.id}>
           <Text style={{fontSize: 18, fontWeight: '600'}}>{item.nome_disciplina}</Text>
           <Text style={{fontSize: 18}}>{item.nome_professor}</Text>

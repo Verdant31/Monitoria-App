@@ -12,16 +12,17 @@ export const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#f2f2f2',
   },
-  requirementsContainer: {
-    width: '80%',
-    backgroundColor: '#f2f2f2',
-    borderRadius: 5,
-    padding: 12,
-    marginTop: 30
+  listContainer: {
+    width: '100%',
+    height: '74%'
   },
-  updateButton: {
+  solicitationCard: {
     width: '80%',
     alignSelf: 'center',
-    marginTop: 40
+    justifyContent:'center',
+    backgroundColor: '#f2f2f2',
+    padding: 12,
+    borderRadius: 5,
+    marginBottom: 30
   }
 })
