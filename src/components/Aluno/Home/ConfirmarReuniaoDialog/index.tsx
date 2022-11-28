@@ -25,6 +25,11 @@ const ConfirmarReuniaoDialog = ({isOpen, closeModal, data}: DialogProps) => {
   const navigation = useNavigation<AlunoProps>();
   const handleConfirmacaoAgendamento = async () => {
     navigation.navigate("Aluno")
+    console.log({
+      horario: data.horario, 
+      data: [ data.dia[1], data.dia[0], data.dia[2] ].join('/'),
+      id_monitoria: data.idMonitoria
+    })
     await api.post('/aluno/agendar/monitoria/', {
         horario: data.horario, 
         data: [ data.dia[1], data.dia[0], data.dia[2] ].join('/'),

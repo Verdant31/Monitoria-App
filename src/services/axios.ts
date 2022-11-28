@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const api = axios.create({
-  baseURL: 'http://192.168.100.83:3001/'
+  baseURL: 'https://projeto-monitoria-api.herokuapp.com/'
 })
 
 //https://projeto-monitoria-api.herokuapp.com/

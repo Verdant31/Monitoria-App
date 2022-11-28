@@ -55,7 +55,7 @@ const MonitoriaInfo = () => {
               </View>
               <View style={{marginBottom: 10}}>
                 <Text style={{fontSize: 18, fontWeight: '600'}}>Horário de contato</Text>
-                <Text style={{fontSize: 18, marginTop: 5}}>{(new Date(monitoriaDetails.horario_monitoria).toLocaleTimeString())}</Text>
+                <Text style={{fontSize: 18, marginTop: 5}}>{(monitoriaDetails.horario_monitoria).split('T')[1].split('.')[0]}</Text>
               </View>
               <View style={{marginBottom: 10}}>
                 <Text style={{fontSize: 18, fontWeight: '600'}}>Email para contato</Text>
