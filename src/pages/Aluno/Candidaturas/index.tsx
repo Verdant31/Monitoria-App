@@ -1,11 +1,7 @@
-import { useNavigation, useRoute } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useEffect, useState } from "react";
-import { FlatList, Text, TouchableOpacity, View } from "react-native";
-import { Button } from "react-native-elements";
+import { FlatList, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { api } from "../../../services/axios";
-import { RootStackParamList } from "../../RootStackParams";
 import { styles } from "./styles";
 
 type Candidatura = {
@@ -15,7 +11,6 @@ type Candidatura = {
 }
 
 const Candidaturas = () => {
-  //TODO Pegar as candidaturas que esse aluno enviou 
   const [ candidaturas, setCandidaturas ] = useState<Candidatura[]>();
 
   useEffect(() => {
@@ -31,7 +26,7 @@ const Candidaturas = () => {
     return (
       <View style={styles.solicitationCard} key={item.nome_disciplina}>
         <Text style={{fontSize: 18, fontWeight: '600'}}>{item.nome_disciplina}</Text>
-        <Text style={{fontSize: 18}}>Status: {item.status === 0 ? 'Pendente' : item.status === 2 ? 'Aprovado' : 'Reprovado'}</Text>
+        <Text style={{fontSize: 18}}>Status: {item.status === 0 || item.status === 1 ? 'Pendente' : item.status === 2 ? 'Aprovado' : 'Reprovado'}</Text>
         {item.motivo !== null && (
           <Text style={{fontSize: 18}}>Motivo: {item.motivo}</Text>
         )}
