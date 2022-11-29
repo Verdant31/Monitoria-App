@@ -36,7 +36,7 @@ const SolicitacoesDosAlunosLista = ({solicitations, removeFromList}: AlunoSolici
     return (
       <View style={item.status === 'Aprovado' ? styles(100).solicitationCard : styles(140).solicitationCard}> 
         <Text style={{fontSize: 18, fontWeight: '500'}}>Aluno: {item.nome_aluno}</Text>
-        <Text style={{fontSize: 18}}>Horario desejado: {(new Date(item.horario).toLocaleTimeString())}</Text>
+        <Text style={{fontSize: 18}}>Horario desejado: {(item.horario).split('T')[1].split('Z')[0].split('.')[0].split(':00')}</Text>
         <Text style={{fontSize: 18}}>Matrícula: {item.matricula_aluno}</Text>
         {item.status === 'Pendente' && 
           (
