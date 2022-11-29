@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
     width: '100%',
     height: '85%',
     alignItems: 'center',
+    marginTop: -30
   },
   meetingCard: {
     backgroundColor: '#f2f2f2', 

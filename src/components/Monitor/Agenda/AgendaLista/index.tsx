@@ -11,6 +11,7 @@ interface AgendaLista {
 const AgendaLista = ({ horarios }: AgendaLista) => {
   const renderItem = ({ item }:any) => (
     <View style={styles.meetingCard}> 
+      <Text style={{fontSize: 18}}>Dia: {item.dia}</Text>
       <Text style={{fontSize: 18, fontWeight: '500'}}>Horário: {item.horario}</Text>
       <Text style={{fontSize: 18}}>Aluno: {item.nome}</Text>
       <Text style={{fontSize: 18}}>Disciplina: {item.nome_disciplina}</Text>
