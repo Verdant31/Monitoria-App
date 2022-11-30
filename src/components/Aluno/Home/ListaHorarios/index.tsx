@@ -55,6 +55,32 @@ const getDay = (day: string) : number => {
   }
 }
 
+
+
+function _getDay(dia_entrada){
+  const _dias = {
+    'Domingo': 0,
+    'Segunda':1,
+    'Terca':2,
+    "Quarta":3,
+    "Quinta":4,
+    "Sexta":5,
+    "Sabado":6
+  }
+  const hoje = new Date(Date.now());
+  const dia_de_hoje = new Date(Date.now()).getDay(); //2
+  const dia_da_monitoria = _dias[dia_entrada];//1
+  if (dia_da_monitoria >= dia_de_hoje){
+      const dias_a_somar = dia_da_monitoria - dia_de_hoje;
+      console.log("daqui ", dias_a_somar, "dias");
+      return dias_a_somar
+  }
+  if(dia_da_monitoria < dia_de_hoje){
+    const dias_a_somar = dia_da_monitoria - dia_de_hoje + 7;
+    return dias_a_somar;
+  }
+}
+
 const ListaHorarios = ({idMonitoria, disciplina, monitor, dia }: ListaHorarios) => {
   const [ horarioEscolhido, setHorarioEscolhido ] = useState('');
   const [ horarios, setHorarios ] = useState<Horario[]>();
@@ -69,12 +95,21 @@ const ListaHorarios = ({idMonitoria, disciplina, monitor, dia }: ListaHorarios) 
     }
     fecthPerfil();
   },[])
-  
+  const options = {  year: 'numeric', month: 'numeric', day: 'numeric' };
+  console.log(new Date().toLocaleDateString('pt-BR', options))
+
+  var dateobj = new Date(new Date().setDate(new Date().getDate() + _getDay(dia)));
+  function pad(n) {
+     return n < 10 ? "0"+n : n;
+  }
+  var month = ["01", "02", "03", "04", "05", "06", "07","08", "09", "10", "11", "12"];
+  var result = pad(dateobj.getDate())+"/"+ month[dateobj.getMonth()] +"/"+dateobj.getFullYear();
+  console.log(result);
   const data = {
     horario: horarioEscolhido,
     disciplina,
     monitor,
-    dia: new Date(new Date().setDate(new Date().getDate() + getDay(dia))).toLocaleDateString().split(/\//),
+    dia: result.split(/\//),
     idMonitoria
   }
 
