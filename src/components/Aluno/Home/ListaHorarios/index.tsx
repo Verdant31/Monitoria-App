@@ -78,7 +78,6 @@ const ListaHorarios = ({idMonitoria, disciplina, monitor, dia }: ListaHorarios) 
     idMonitoria
   }
 
-  console.log(data)
 
   const handleOpenModal = (horario: string) => {
     setHorarioEscolhido(horario);
