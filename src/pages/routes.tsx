@@ -33,12 +33,12 @@ const MonitorHomeTabs = () => {
           height: 90,
           backgroundColor: '#003B71',
           borderTopWidth: 0,
-          paddingTop: 20
+          paddingBottom: 15,
         },
         tabBarLabelStyle: {
           fontSize: 14,
           color: 'white',
-          paddingBottom: 15,
+          marginBottom: 15,
         }, 
         headerShadowVisible: false,
         headerShown: false,
@@ -71,18 +71,18 @@ const AlunoHomeTabs = () => {
           height: 90,
           backgroundColor: '#003B71',
           borderTopWidth: 0,
-          paddingTop: 20
+          paddingBottom: 15,
         },
         tabBarLabelStyle: {
           fontSize: 14,
           color: 'white',
-          paddingBottom: 15,
+          marginBottom: 15,
         }, 
         headerShadowVisible: false,
         headerShown: false,
       }}
     >
-      <Tab.Screen name="Solicitação" component={CriarSolicitacao} 
+      <Tab.Screen name="Sugerir" component={CriarSolicitacao} 
         options={{
           tabBarIcon: () => <Ionicons name="add-circle"  size={28} color="white" />
         }}

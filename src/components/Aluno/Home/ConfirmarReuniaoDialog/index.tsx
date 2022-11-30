@@ -1,6 +1,6 @@
 import { Dimensions, View } from 'react-native';
 import { Button } from 'react-native-elements';
-import { Button as ButtonPaper, Paragraph, Dialog, Portal, Provider } from 'react-native-paper';
+import { Button as ButtonPaper, Paragraph, Dialog, Portal, Provider, Text } from 'react-native-paper';
 import { styles } from './styles';
 //React navigation
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -24,20 +24,13 @@ type AlunoProps = NativeStackNavigationProp<RootStackParamList, 'Aluno'>;
 const ConfirmarReuniaoDialog = ({isOpen, closeModal, data}: DialogProps) => {
   const navigation = useNavigation<AlunoProps>();
   const handleConfirmacaoAgendamento = async () => {
-    navigation.navigate("Aluno")
-    console.log({
-      horario: data.horario, 
-      data: [ data.dia[1], data.dia[0], data.dia[2] ].join('/'),
-      id_monitoria: data.idMonitoria
-    })
     await api.post('/aluno/agendar/monitoria/', {
         horario: data.horario, 
-        data: [ data.dia[1], data.dia[0], data.dia[2] ].join('/'),
+        data: [ data.dia[0], data.dia[1], data.dia[2] ].join('/'),
         id_monitoria: data.idMonitoria
-      })
-    .then(() => {
-      closeModal();
-    });
+    }).then(() => {
+      navigation.navigate("Aluno")
+    })
   }
 
   return (
@@ -47,24 +40,24 @@ const ConfirmarReuniaoDialog = ({isOpen, closeModal, data}: DialogProps) => {
           <Dialog visible={isOpen} dismissable>
             <Dialog.Title>Confirmação</Dialog.Title>
             <Dialog.Content>
-              <Paragraph>
+              <Paragraph style={{fontSize: 21}}>
                 Confirme os dados da sua solicitação de monitoria.
               </Paragraph>
-              <Paragraph>
-                Monitor: {data.monitor}
+              <Paragraph style={{fontSize: 21}}>
+                <Text style={{fontWeight: 'bold'}}>Monitor:</Text> {data.monitor}
               </Paragraph>
-              <Paragraph>
-                Disciplina: {data.disciplina}
+              <Paragraph style={{fontSize: 21}}>
+              <Text style={{fontWeight: 'bold'}}>Disciplina:</Text> {data.disciplina}
               </Paragraph>
-              <Paragraph>
-                Horário: {data.horario} do dia {[ data.dia[1], data.dia[0], data.dia[2] ].join('/')}
+              <Paragraph style={{fontSize: 21}}>
+              <Text style={{fontWeight: 'bold'}}>Horário:</Text>  {data.horario} do dia {[ data.dia[0], data.dia[1], data.dia[2] ].join('/')}
               </Paragraph>
               <View style={styles.buttonsContainer}>
                 <Button title="Confirmar" onPress={handleConfirmacaoAgendamento}/>
               </View>
             </Dialog.Content>
             <Dialog.Actions>
-              <ButtonPaper color={'black'} onPress={closeModal}>Sair</ButtonPaper>
+              <ButtonPaper color={'white'} onPress={closeModal}>Sair</ButtonPaper>
             </Dialog.Actions>
           </Dialog>
         </Portal>

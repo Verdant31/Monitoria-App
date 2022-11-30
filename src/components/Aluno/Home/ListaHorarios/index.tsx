@@ -48,6 +48,7 @@ const ListaHorarios = ({idMonitoria, disciplina, monitor, dia }: ListaHorarios) 
     }
     fecthPerfil();
   },[])
+  
   const data = {
     horario: horarioEscolhido,
     disciplina,
