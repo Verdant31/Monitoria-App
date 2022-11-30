@@ -16,19 +16,40 @@ type Horario = {
   horario: string;
 }
 
-const getDay = (day: string) : number => {
-  const todayDay = new Date().getDay();
+const getDayTwo =(day: string) => {
   switch (day) {
     case 'Segunda':
-      return Math.abs(todayDay - 1)
+        return - 1
     case 'Terca':
-      return Math.abs(todayDay - 2)
+        return  2
     case 'Quarta':
-      return Math.abs(todayDay - 3)
+        return  3
     case 'Quinta':
-      return Math.abs(todayDay - 4)
+        return  4
     case 'Sexta':
-      return Math.abs(todayDay - 5)
+        return  5
+    default:
+      return 0;
+  }
+}
+
+const getDay = (day: string) : number => {
+  const todayDay = new Date().getDay() + 2;
+  const dayInNumber = getDayTwo(day)
+  if((dayInNumber - todayDay) >= 0) {
+    return  dayInNumber - todayDay;
+  }
+  switch (day) {
+    case 'Segunda':
+        return 6;
+    case 'Terca':
+        return 7;
+    case 'Quarta':
+        return 8;
+    case 'Quinta':
+        return 9;
+    case 'Sexta':
+        return 10;
     default:
       return 0;
   }
@@ -56,6 +77,8 @@ const ListaHorarios = ({idMonitoria, disciplina, monitor, dia }: ListaHorarios) 
     dia: new Date(new Date().setDate(new Date().getDate() + getDay(dia))).toLocaleDateString().split(/\//),
     idMonitoria
   }
+
+  console.log(data)
 
   const handleOpenModal = (horario: string) => {
     setHorarioEscolhido(horario);
