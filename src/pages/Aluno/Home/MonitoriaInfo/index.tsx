@@ -28,6 +28,7 @@ const MonitoriaInfo = () => {
   useEffect(() => {
     const fetchMonitoriaDetails = async () => {
       await api.post('/aluno/monitoria', params).then(res => {
+        console.log(res.data)
         setMonitoriaDetails(res.data)
       })
     }
@@ -55,7 +56,7 @@ const MonitoriaInfo = () => {
               </View>
               <View style={{marginBottom: 10}}>
                 <Text style={{fontSize: 18, fontWeight: '600'}}>Horário de contato</Text>
-                <Text style={{fontSize: 18, marginTop: 5}}>{(monitoriaDetails.horario_monitoria).slice(11, -8)}</Text>
+                <Text style={{fontSize: 18, marginTop: 5}}>{monitoriaDetails.dia} - {(monitoriaDetails.horario_monitoria).slice(11, -8)}</Text>
               </View>
               <View style={{marginBottom: 10}}>
                 <Text style={{fontSize: 18, fontWeight: '600'}}>Email para contato</Text>

@@ -47,10 +47,10 @@ const ConfirmarReuniaoDialog = ({isOpen, closeModal, data}: DialogProps) => {
               <Paragraph style={{fontSize: 21, marginVertical: 10}}>
                 <Text style={{fontWeight: 'bold'}}>Monitor:</Text> {data.monitor}
               </Paragraph>
-              <Paragraph style={{fontSize: 21, marginBottom: 10}}>
+              <Paragraph style={{fontSize: 21, marginBottom: 5, lineHeight: 25}}>
               <Text style={{fontWeight: 'bold'}}>Disciplina:</Text> {data.disciplina}
               </Paragraph>
-              <Paragraph style={{fontSize: 21, marginBottom: 10}}>
+              <Paragraph style={{fontSize: 21, marginBottom: 5, lineHeight: 25}}>
               <Text style={{fontWeight: 'bold'}}>Horário:</Text>  {data.horario} do dia {[ data.dia[0], data.dia[1], data.dia[2] ].join('/')}
               </Paragraph>
               <View style={styles.buttonsContainer}>
