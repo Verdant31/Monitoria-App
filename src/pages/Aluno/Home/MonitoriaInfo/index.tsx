@@ -55,8 +55,8 @@ const MonitoriaInfo = () => {
                 <Text style={{fontSize: 18, marginTop: 5}}>{monitoriaDetails.nome_disciplina}</Text>
               </View>
               <View style={{marginBottom: 10}}>
-                <Text style={{fontSize: 18, fontWeight: '600'}}>Horário da monitoria</Text>
-                <Text style={{fontSize: 18, marginTop: 5}}>{monitoriaDetails.dia} - {(monitoriaDetails.horario_monitoria).split('T')[1].split('Z')[0].split(':00.000')[0]}</Text>
+                <Text style={{fontSize: 18, fontWeight: '600'}}>Horário de contato</Text>
+                <Text style={{fontSize: 18, marginTop: 5}}>{monitoriaDetails.dia} - {(monitoriaDetails.horario_monitoria).slice(11, -8)}</Text>
               </View>
               <View style={{marginBottom: 10}}>
                 <Text style={{fontSize: 18, fontWeight: '600'}}>Email para contato</Text>

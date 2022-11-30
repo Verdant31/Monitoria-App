@@ -22,7 +22,7 @@ const Agenda = () => {
           return {
             dia: vaga.dia,
             nome: vaga.nome_aluno,
-            horario: vaga.horario.split('T')[1].split('Z')[0].split('.')[0].split(':00'),
+            horario: vaga.horario.slice(11, -8),
             nome_disciplina: vaga.disciplina
           }
         }))
